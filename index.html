@@ -877,7 +877,19 @@
         gap: 1rem;
     }
 }
+/* Only apply on screens smaller than 768px (phones) */
+@media (max-width: 768px) {
+    body {
+        padding-left: 20px;   /* space on left */
+        padding-right: 20px;  /* space on right */
+    }
 
+    /* Optional: reduce section padding too for mobile */
+    section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
 
 
