@@ -840,6 +840,43 @@
     z-index: 0;
 }
 
+/* Mobile responsive: move profile photo below text */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;   /* stack text and photo vertically */
+        align-items: center;      /* center everything */
+        text-align: center;       /* center text */
+    }
+
+    .profile-photo {
+        margin-top: 2rem;         /* space between text and photo */
+    }
+}
+@media (max-width: 768px) {
+    /* Add some top padding/margin to hero section so content doesn't go under navbar */
+    .hero {
+        padding-top: 30vh; /* push content down on mobile */
+    }
+
+    /* Optional: center hero text on mobile */
+    .hero-text {
+        text-align: center;
+    }
+
+    /* Make hero stats stack vertically on mobile */
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Make buttons stack on mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
 
 
 
@@ -918,7 +955,7 @@
 	<div class="profile-photo">
     <div class="photo-bg"></div> <!-- solid background -->
     <div class="photo-glow"></div>
-    <img src="Profile.png" alt="Profile Photo">
+    <img src="profile.png" alt="Profile Photo">
 </div>
 
         
