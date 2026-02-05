@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPortfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --bg-section: #1e293b;
+            --accent-primary: #22D3EE;
+            --accent-secondary: #3b82f6;
+            --text-primary: #f1f5f9;
+            --text-secondary: #ffffff;
+            --text-muted: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 5px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+	    padding-top: 8%;
+            background: transparent;
+
+    /*background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);*/
+
+
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+.hero-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: transparent; /* no fill */
+    border: 2px solid #22D3EE; /* visible border */
+    border-radius: 50px;
+    color: var(--accent-primary); /* keep your text color */
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px; 
+
+    /* subtle glow effect around border */
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.6), 
+                0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #22D3EE 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22D3EE 0%, #3b82f6 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 211, 238, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 211, 238, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            margin-top: 2rem;
+        }
+
+        .education-card h4 {
+            color: var(--accent-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: var(--accent-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .edu-details {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(34, 211, 238, 0.1);
+        }
+
+        .edu-detail span:first-child {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-detail span:last-child {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h4 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item span:first-child {
+            font-size: 1.25rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(34, 211, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 15px 40px rgba(34, 211, 238, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            padding: 2rem;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+        }
+
+        .project-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-highlights li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .project-highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 6px;
+            color: var(--accent-secondary);
+            font-size: 0.85rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 6px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: rgba(34, 211, 238, 0.2);
+            transform: translateX(5px);
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+        }
+
+        .cert-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-issuer {
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .cert-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 6px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cert-link:hover {
+            background: rgba(34, 211, 238, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: rgba(34, 211, 238, 0.2);
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(34, 211, 238, 0.1);
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 4rem 3%;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #22D3EE 0%, #3b82f6 100%);
+            z-index: 9999;
+        }
+/* Background Video */
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    transform: translate(-50%,-50%);
+    z-index: -2;
+    opacity: 0.9;
+    object-fit: cover;
+}
+
+/* Dark Overlay (15% opacity) */
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 15% dark overlay */
+    z-index: -1;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.2) 100%
+    );
+    z-index: -1;
+}
+
+/* Hover glow for Education, Contact Info & Core Competencies */
+
+.education-card,
+.info-card,
+.contact-container {
+    transition: 
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.education-card:hover,
+.info-card:hover,
+.contact-container:hover {
+    border-color: var(--accent-primary);
+   box-shadow:
+    0 0 14px rgba(34, 211, 238, 0.42),
+    0 0 28px rgba(34, 211, 238, 0.25);
+
+
+}
+.info-card a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.info-card a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.project-card span {
+    color: rgba(220, 220, 220, 0.9);
+    border-color: rgba(180, 180, 180, 0.80);
+}
+
+.profile-photo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.profile-photo img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-photo {
+    position: relative;
+    width: 200px; /* container size */
+    height: 200px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem; /* spacing between text and photo */
+}
+
+.hero-text {
+    flex: 1; /* text takes remaining space */
+}
+
+/* Profile Photo Container */
+/* Profile Photo Container */
+.profile-photo {
+    position: relative;
+    width: 200px;               /* Frame size */
+    height: 200px;
+    border-radius: 50%;
+    background-color: #0f172a; /* subtle frame background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.0); /* glow around frame */
+    overflow: visible; /* allow photo to pop out */
+    z-index: 1;
+}
+
+/* Glow behind the photo */
+.photo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;               /* slightly bigger than frame */
+    height: 250px;
+    border-radius: 90%;
+    background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, rgba(34,211,238,0) 90%);
+    filter: blur(20px);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* Profile Image */
+.profile-photo img {
+    position: absolute;
+    bottom: -20px;              /* bottom pops out */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;               /* slightly smaller than frame to show background */
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0fa5c1;  /* darker border */
+    box-shadow: 0 0 20px rgba(34,211,238,0.6); /* subtle glow */
+    z-index: 2;
+}
+
+.photo-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;               /* same as frame */
+    height: 200px;
+    border-radius: 50%;
+    background-color: #0f172a;  /* solid color */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<!-- Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="earth.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div id="video-overlay"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Vaibhavi Tikke</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    
+   <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-tag">DATA ANALYST</span>
+
+            <h1>
+                Hello, I'm <span class="gradient-text">Vaibhavi Tikke</span>
+            </h1>
+            <p class="hero-subtitle">
+                Analytical and detail-oriented professional skilled in data analysis, visualization, and Power BI dashboard development, 
+                with experience turning raw data into actionable business insights.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">9.08</span>
+                    <span class="stat-label">GPA</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Major Projects</span>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work → 
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get In Touch →
+                </a>
+            </div>
+        </div>
+	<div class="profile-photo">
+    <div class="photo-bg"></div> <!-- solid background -->
+    <div class="photo-glow"></div>
+    <img src="profile.png" alt="Profile Photo">
+</div>
+
+        
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-tag">About Me</span>
+            <h2 class="section-title">Background & Education</h2>
+            <p class="section-subtitle">
+                Passionate about transforming complex data into meaningful insights that drive business decisions.
+            </p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Who I Am</h3>
+                <p>
+                    I'm a dedicated Data Analyst with a strong foundation in data analysis, visualization, and business intelligence. 
+                    My analytical approach combines technical expertise with effective communication to deliver insights that matter.
+                </p>
+                <p>
+                    Currently pursuing my Bachelor of Computer Application at Gogte College of Commerce with an outstanding 9.08 GPA, 
+                    I specialize in Power BI dashboard development, ETL processes, and data modeling.
+                </p>
+                
+                <div class="education-card">
+                    <h4>🎓 Education</h4>
+                    <div class="degree">Bachelor of Computer Application</div>
+                    <div class="institution">Gogte College of Commerce</div>
+                    <div class="edu-details">
+                        <div class="edu-detail">
+                            <span>GPA</span>
+                            <span style="color: var(--accent-primary); font-size: 1.2rem;">9.08</span>
+                        </div>
+                        <div class="edu-detail">
+                            <span>Duration</span>
+                            <span>Sep 2023 - Present</span>
+                        </div>
+                        <div class="edu-detail">
+                            <span>Location</span>
+                            <span>Belgaum, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h4>📍 Contact Information</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span><a href="mailto:vktikke2005@gmail.com">
+    vktikke2005@gmail.com
+</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>+91 6363152161</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Belgaum, Karnataka, India</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4>💼 Core Competencies</h4>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                            ✓ Data Analysis & Visualization
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                            ✓ Power BI Dashboard Development
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                            ✓ Business Intelligence
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                            ✓ Data Cleaning & Transformation
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            ✓ Strategic Decision Support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-tag">Skills</span>
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">
+                A comprehensive toolkit for modern data analysis and business intelligence.
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Data Analytics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">ETL Tools</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Data Cleaning</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">DAX</span>
+                    <span class="skill-tag">Data Modeling</span>
+                    <span class="skill-tag">Power BI Service</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">C Programming</span>
+		     <span class="skill-tag">SQL</span>
+       			 <span class="skill-tag">Python</span>
+        		<span class="skill-tag">R (Intermediate)</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Professional Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Communication Skills</span>
+                    <span class="skill-tag">Active Learning</span>
+                    <span class="skill-tag">Active Listening</span>
+                    <span class="skill-tag">Relationship Building</span>
+                    <span class="skill-tag">Teamwork</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Real-world data analysis projects demonstrating my analytical capabilities and business impact.
+            </p>
+        </div>
+        <div class="projects-grid">
+            <!-- Bike Sales Analysis Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Bike Sales Analysis Dashboard</h3>
+                    <div class="project-meta">
+                        <span>📊 Power BI</span>
+                        <span>📈 Data Analysis</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Comprehensive analysis of bike sales data to identify customer purchasing patterns across demographics, 
+                        income levels, and commute distance, enabling data-driven marketing and sales strategies.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Analyzed customer purchasing patterns across demographics and income levels</li>
+                        <li>Performed data cleaning, transformation, and validation to ensure accuracy and reliability</li>
+                        <li>Designed interactive dashboards in Power BI with slicers and KPIs to support business decision-making</li>
+                        <li>Generated actionable insights on target customer segments to improve marketing and sales strategies</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">Data Analysis</span>
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">DAX</span>
+                        <span class="project-tag">Data Visualization</span>
+                    </div>
+                    <a href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <span>View on GitHub</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Airline Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Airline Customer Satisfaction Analysis</h3>
+                    <div class="project-meta">
+                        <span>📊 Power BI</span>
+                        <span>📈 Customer Analytics</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        In-depth analysis of airline survey data to evaluate customer satisfaction trends by age, gender, 
+                        class, and travel type, delivering insights to enhance customer experience and loyalty strategies.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Conducted in-depth analysis of airline survey data to evaluate customer satisfaction trends</li>
+                        <li>Built dynamic Power BI dashboards using DAX and Power Query to visualize KPIs</li>
+                        <li>Analyzed passenger counts, satisfaction levels, and frequent flyer data</li>
+                        <li>Identified key drivers of satisfaction including seat comfort, food & drink quality, and on-time performance</li>
+                        <li>Delivered data-driven recommendations to enhance customer experience and improve loyalty strategies</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">DAX</span>
+                        <span class="project-tag">Power Query</span>
+                        <span class="project-tag">Customer Analytics</span>
+                        <span class="project-tag">KPI Development</span>
+                    </div>
+                    <a href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <span>View on GitHub</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-header">
+            <span class="section-tag">Achievements</span>
+            <h2 class="section-title">Professional Certifications</h2>
+            <p class="section-subtitle">
+                Continuous learning and professional development in data analytics and visualization.
+            </p>
+        </div>
+        <div class="certifications-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🎓</div>
+                <h3>Data Analytics Job Simulation</h3>
+                <div class="cert-issuer">Deloitte</div>
+                <div class="cert-date">May 2025</div>
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_wYQP6YKC4ZiG7p2sW_1746460684352_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                    View Certificate →
+                </a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">📊</div>
+                <h3>Data Visualisation: Empowering Business with Effective Insights</h3>
+                <div class="cert-issuer">Tata</div>
+                <div class="cert-date">May 2025</div>
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_wYQP6YKC4ZiG7p2sW_1748010529180_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                    View Certificate →
+                </a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">🔍</div>
+                <h3>Google Data Analytics Certification</h3>
+                <div class="cert-issuer">Google</div>
+                <div class="cert-date">February 2025</div>
+                <a href="https://skillshop.credential.net/5292d8c2-aeef-4aa4-84c5-55a36a3530a6#acc.VYIqEjJ8" target="_blank" rel="noopener noreferrer" class="cert-link">
+                    View Certificate →
+                </a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">💾</div>
+                <h3>MySQL HeatWave Implementation Certified Associate</h3>
+                <div class="cert-issuer">Oracle</div>
+                <div class="cert-date">August 2025</div>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=208FA396186D2E0DD11112417D10C0C5CF2CB76B239167AF0148393A21375674" target="_blank" rel="noopener noreferrer" class="cert-link">
+                    View Certificate →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">
+                I'm currently seeking opportunities in data analytics. Let's discuss how I can help transform your data into insights.
+            </p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-links">
+                <a href="mailto:vktikke2005@gmail.com" class="contact-link">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Email</div>
+                        <div style="font-weight: 600;">vktikke2005@gmail.com</div>
+                    </div>
+                </a>
+
+                <a href="tel:+916363152161" class="contact-link">
+                    <span class="contact-icon">📱</span>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Phone</div>
+                        <div style="font-weight: 600;">+91 6363152161</div>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" class="contact-link">
+                    <span class="contact-icon">💼</span>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">LinkedIn</div>
+                        <div style="font-weight: 600;">Connect with me</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Vaibh31" target="_blank" class="contact-link">
+                    <span class="contact-icon">💻</span>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">GitHub</div>
+                        <div style="font-weight: 600;">View my work</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Vaibhavi Tikke. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Data Analyst | Belgaum, Karnataka, India
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = 'var(--accent-primary)';
+                }
+            });
+        });
+
+        // Counter animation
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current * 100) / 100;
+                }
+            }, 20);
+        };
+
+        // Trigger counter animation when hero comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = document.querySelectorAll('.stat-number');
+                    animateCounter(statNumbers[0], 9.08);
+                    animateCou
