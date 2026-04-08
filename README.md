@@ -1,3 +1,1 @@
-## 🌐 About
-
-Personal portfolio showcasing my projects and skills.
+## Personal portfolio showcasing my projects and skills.
