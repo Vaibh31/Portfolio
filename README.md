@@ -54,8 +54,8 @@ Portfolio/
 ## 📫 Connect With Me
 
 - GitHub: https://github.com/vaibh31
-- LinkedIn: Add your LinkedIn profile here
-- Email: Add your email here
+- LinkedIn: (https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/)
+- X profile: https://x.com/Vaiibhavii_31X
 
 ---
 
