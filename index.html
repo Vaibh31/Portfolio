@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-dark: #020617;
@@ -107,10 +110,10 @@
             display: flex;
             align-items: center;
             padding: 0 5%;
-	    padding-top: 8%;
+            padding-top: 8%;
             background: transparent;
 
-    /*background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);*/
+            /*background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);*/
 
 
         }
@@ -119,22 +122,26 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-.hero-tag {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    background: transparent; /* no fill */
-    border: 2px solid #22D3EE; /* visible border */
-    border-radius: 50px;
-    color: var(--accent-primary); /* keep your text color */
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    letter-spacing: 1px; 
 
-    /* subtle glow effect around border */
-    box-shadow: 0 0 8px rgba(34, 211, 238, 0.6), 
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: transparent;
+            /* no fill */
+            border: 2px solid #22D3EE;
+            /* visible border */
+            border-radius: 50px;
+            color: var(--accent-primary);
+            /* keep your text color */
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+
+            /* subtle glow effect around border */
+            box-shadow: 0 0 8px rgba(34, 211, 238, 0.6),
                 0 0 15px rgba(34, 211, 238, 0.3);
-}
+        }
 
 
 
@@ -510,6 +517,149 @@
             transform: translateX(5px);
         }
 
+        /* Fun Projects Sub-section */
+        .fun-projects-header {
+            max-width: 1200px;
+            margin: 4rem auto 3rem;
+            text-align: center;
+        }
+
+        .fun-projects-header h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .fun-projects-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .fun-projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .fun-card {
+            background: var(--bg-card);
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fun-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 50%, #22d3ee 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .fun-card:hover::before {
+            opacity: 1;
+        }
+
+        .fun-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .fun-card-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border-radius: 10px;
+        }
+
+        .fun-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .fun-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .fun-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .fun-tag {
+            padding: 0.35rem 0.75rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 5px;
+            color: #a78bfa;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .fun-card-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .fun-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .fun-link-github {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #a78bfa;
+        }
+
+        .fun-link-github:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateX(3px);
+        }
+
+        .fun-link-live {
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: var(--accent-primary);
+        }
+
+        .fun-link-live:hover {
+            background: rgba(34, 211, 238, 0.2);
+            transform: translateX(3px);
+        }
+
         /* Certifications Section */
         .certifications-grid {
             max-width: 1200px;
@@ -664,251 +814,379 @@
             background: linear-gradient(90deg, #22D3EE 0%, #3b82f6 100%);
             z-index: 9999;
         }
-/* Background Video */
-#bg-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    transform: translate(-50%,-50%);
-    z-index: -2;
-    opacity: 0.9;
-    object-fit: cover;
-}
 
-/* Dark Overlay (15% opacity) */
-#video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 15% dark overlay */
-    z-index: -1;
-}
+        /* Background Video */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+            opacity: 0.9;
+            object-fit: cover;
+        }
 
-.video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        rgba(0,0,0,0.3) 0%,
-        rgba(0,0,0,0.2) 100%
-    );
-    z-index: -1;
-}
+        /* Dark Overlay (15% opacity) */
+        #video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 15% dark overlay */
+            z-index: -1;
+        }
 
-/* Hover glow for Education, Contact Info & Core Competencies */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                    rgba(0, 0, 0, 0.3) 0%,
+                    rgba(0, 0, 0, 0.2) 100%);
+            z-index: -1;
+        }
 
-.education-card,
-.info-card,
-.contact-container {
-    transition: 
-        box-shadow 0.3s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
+        /* Hover glow for Education, Contact Info & Core Competencies */
 
-.education-card:hover,
-.info-card:hover,
-.contact-container:hover {
-    border-color: var(--accent-primary);
-   box-shadow:
-    0 0 14px rgba(34, 211, 238, 0.42),
-    0 0 28px rgba(34, 211, 238, 0.25);
+        .education-card,
+        .info-card,
+        .contact-container {
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
 
-
-}
-.info-card a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.info-card a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-.project-card span {
-    color: rgba(220, 220, 220, 0.9);
-    border-color: rgba(180, 180, 180, 0.80);
-}
-
-.profile-photo {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin-bottom: 30px;
-}
-
-.profile-photo img {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 2;
-}
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.profile-photo {
-    position: relative;
-    width: 200px; /* container size */
-    height: 200px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem; /* spacing between text and photo */
-}
-
-.hero-text {
-    flex: 1; /* text takes remaining space */
-}
-
-/* Profile Photo Container */
-/* Profile Photo Container */
-.profile-photo {
-    position: relative;
-    width: 200px;               /* Frame size */
-    height: 200px;
-    border-radius: 50%;
-    background-color: #0f172a; /* subtle frame background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 15px rgba(34, 211, 238, 0.0); /* glow around frame */
-    overflow: visible; /* allow photo to pop out */
-    z-index: 1;
-}
-
-/* Glow behind the photo */
-.photo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;               /* slightly bigger than frame */
-    height: 250px;
-    border-radius: 90%;
-    background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, rgba(34,211,238,0) 90%);
-    filter: blur(20px);
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-/* Profile Image */
-.profile-photo img {
-    position: absolute;
-    bottom: -20px;              /* bottom pops out */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;               /* slightly smaller than frame to show background */
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #0fa5c1;  /* darker border */
-    box-shadow: 0 0 20px rgba(34,211,238,0.6); /* subtle glow */
-    z-index: 2;
-}
-
-.photo-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;               /* same as frame */
-    height: 200px;
-    border-radius: 50%;
-    background-color: #0f172a;  /* solid color */
-    transform: translate(-50%, -50%);
-    z-index: 0;
-}
-
-/* Mobile responsive: move profile photo below text */
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;   /* stack text and photo vertically */
-        align-items: center;      /* center everything */
-        text-align: center;       /* center text */
-    }
-
-    .profile-photo {
-        margin-top: 2rem;         /* space between text and photo */
-    }
-}
-@media (max-width: 768px) {
-    /* Add some top padding/margin to hero section so content doesn't go under navbar */
-    .hero {
-        padding-top: 30vh; /* push content down on mobile */
-    }
-
-    /* Optional: center hero text on mobile */
-    .hero-text {
-        text-align: center;
-    }
-
-    /* Make hero stats stack vertically on mobile */
-    .hero-stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    /* Make buttons stack on mobile */
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-}
-/* Only apply on screens smaller than 768px (phones) */
-@media (max-width: 768px) {
-    body {
-        padding-left: 20px;   /* space on left */
-        padding-right: 20px;  /* space on right */
-    }
-
-    /* Optional: reduce section padding too for mobile */
-    section {
-        padding-left: 10;
-        padding-right: 0;
-    }
-}
+        .education-card:hover,
+        .info-card:hover,
+        .contact-container:hover {
+            border-color: var(--accent-primary);
+            box-shadow:
+                0 0 14px rgba(34, 211, 238, 0.42),
+                0 0 28px rgba(34, 211, 238, 0.25);
 
 
+        }
 
+        .info-card a {
+            color: #ffffff;
+            text-decoration: none;
+        }
 
+        .info-card a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
 
+        .project-card span {
+            color: rgba(220, 220, 220, 0.9);
+            border-color: rgba(180, 180, 180, 0.80);
+        }
 
+        .profile-photo {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
 
+        .profile-photo img {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 2;
+        }
 
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
+        .profile-photo {
+            position: relative;
+            width: 200px;
+            /* container size */
+            height: 200px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            /* spacing between text and photo */
+        }
+
+        .hero-text {
+            flex: 1;
+            /* text takes remaining space */
+        }
+
+        /* Profile Photo Container */
+        /* Profile Photo Container */
+        .profile-photo {
+            position: relative;
+            width: 200px;
+            /* Frame size */
+            height: 200px;
+            border-radius: 50%;
+            background-color: #0f172a;
+            /* subtle frame background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.0);
+            /* glow around frame */
+            overflow: visible;
+            /* allow photo to pop out */
+            z-index: 1;
+        }
+
+        /* Glow behind the photo */
+        .photo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            /* slightly bigger than frame */
+            height: 250px;
+            border-radius: 90%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, rgba(34, 211, 238, 0) 90%);
+            filter: blur(20px);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* Profile Image */
+        .profile-photo img {
+            position: absolute;
+            bottom: -20px;
+            /* bottom pops out */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            /* slightly smaller than frame to show background */
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0fa5c1;
+            /* darker border */
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+            /* subtle glow */
+            z-index: 2;
+        }
+
+        .photo-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            /* same as frame */
+            height: 200px;
+            border-radius: 50%;
+            background-color: #0f172a;
+            /* solid color */
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        /* Mobile responsive: move profile photo below text */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                /* stack text and photo vertically */
+                align-items: center;
+                /* center everything */
+                text-align: center;
+                /* center text */
+            }
+
+            .profile-photo {
+                margin-top: 2rem;
+                /* space between text and photo */
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Add some top padding/margin to hero section so content doesn't go under navbar */
+            .hero {
+                padding-top: 30vh;
+                /* push content down on mobile */
+            }
+
+            /* Optional: center hero text on mobile */
+            .hero-text {
+                text-align: center;
+            }
+
+            /* Make hero stats stack vertically on mobile */
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            /* Make buttons stack on mobile */
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        /* Only apply on screens smaller than 768px (phones) */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 20px;
+                /* space on left */
+                padding-right: 20px;
+                /* space on right */
+            }
+
+            /* Optional: reduce section padding too for mobile */
+            section {
+                padding-left: 10;
+                padding-right: 0;
+            }
+        }
+
+        /* Certificate Preview Modal */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cert-modal-content-container {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cert-modal-content {
+            margin: auto;
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid rgba(34, 211, 238, 0.3);
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+        }
+
+        .cert-modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: var(--text-primary);
+            padding: 15px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .cert-modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f5f9;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 10001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 50%;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        .cert-modal-close:hover,
+        .cert-modal-close:focus {
+            color: var(--accent-primary);
+            text-decoration: none;
+            cursor: pointer;
+            background: rgba(34, 211, 238, 0.2);
+            transform: scale(1.1);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            .cert-modal-content-container {
+                max-width: 95%;
+            }
+
+            .cert-modal-close {
+                top: 15px;
+                right: 15px;
+            }
+        }
     </style>
 </head>
+
 <body>
-<!-- Background Video -->
-<video autoplay muted loop id="bg-video">
-    <source src="earth.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-<div id="video-overlay"></div>
+    <!-- Background Video -->
+    <video autoplay muted loop id="bg-video">
+        <source src="earth.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="video-overlay"></div>
 
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -927,52 +1205,53 @@
     </nav>
 
     <!-- Hero Section -->
-    
-   <!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <div class="hero-text">
-            <span class="hero-tag">DATA ANALYST</span>
 
-            <h1>
-                Hello, I'm <span class="gradient-text">Vaibhavi Tikke</span>
-            </h1>
-            <p class="hero-subtitle">
-                Analytical and detail-oriented professional skilled in data analysis, visualization, and Power BI dashboard development, 
-                with experience turning raw data into actionable business insights.
-            </p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">9.08</span>
-                    <span class="stat-label">GPA</span>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-tag">DATA ANALYST</span>
+
+                <h1>
+                    Hello, I'm <span class="gradient-text">Vaibhavi Tikke</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Analytical and detail-oriented professional skilled in data analysis, visualization, and Power BI
+                    dashboard development,
+                    with experience turning raw data into actionable business insights.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">9.05</span>
+                        <span class="stat-label">GPA</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Major Projects</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Certifications</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2</span>
-                    <span class="stat-label">Major Projects</span>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work →
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Get In Touch →
+                    </a>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    View My Work → 
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    Get In Touch →
-                </a>
+            <div class="profile-photo">
+                <div class="photo-bg"></div> <!-- solid background -->
+                <div class="photo-glow"></div>
+                <img src="Profile.png" alt="Profile Photo">
             </div>
+
+
         </div>
-	<div class="profile-photo">
-    <div class="photo-bg"></div> <!-- solid background -->
-    <div class="photo-glow"></div>
-    <img src="Profile.png" alt="Profile Photo">
-</div>
-
-        
-    </div>
-</section>
+    </section>
 
     <!-- About Section -->
     <section id="about">
@@ -987,14 +1266,17 @@
             <div class="about-text">
                 <h3>Who I Am</h3>
                 <p>
-                    I'm a dedicated Data Analyst with a strong foundation in data analysis, visualization, and business intelligence. 
-                    My analytical approach combines technical expertise with effective communication to deliver insights that matter.
+                    I'm a dedicated Data Analyst with a strong foundation in data analysis, visualization, and business
+                    intelligence.
+                    My analytical approach combines technical expertise with effective communication to deliver insights
+                    that matter.
                 </p>
                 <p>
-                    Currently pursuing my Bachelor of Computer Application at Gogte College of Commerce with an outstanding 9.08 GPA, 
+                    Currently pursuing my Bachelor of Computer Application at Gogte College of Commerce with an
+                    outstanding 9.05 GPA,
                     I specialize in Power BI dashboard development, ETL processes, and data modeling.
                 </p>
-                
+
                 <div class="education-card">
                     <h4>🎓 Education</h4>
                     <div class="degree">Bachelor of Computer Application</div>
@@ -1002,11 +1284,11 @@
                     <div class="edu-details">
                         <div class="edu-detail">
                             <span>GPA</span>
-                            <span style="color: var(--accent-primary); font-size: 1.2rem;">9.08</span>
+                            <span style="color: var(--accent-primary); font-size: 1.2rem;">9.05</span>
                         </div>
                         <div class="edu-detail">
                             <span>Duration</span>
-                            <span>Sep 2023 - Present</span>
+                            <span>Sep 2023 - May 2026</span>
                         </div>
                         <div class="edu-detail">
                             <span>Location</span>
@@ -1023,8 +1305,8 @@
                         <div class="contact-item">
                             <span>📧</span>
                             <span><a href="mailto:vktikke2005@gmail.com">
-    vktikke2005@gmail.com
-</a></span>
+                                    vktikke2005@gmail.com
+                                </a></span>
                         </div>
                         <div class="contact-item">
                             <span>📱</span>
@@ -1089,9 +1371,9 @@
                 <h3>Programming</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">C Programming</span>
-		     <span class="skill-tag">SQL</span>
-       			 <span class="skill-tag">Python</span>
-        		<span class="skill-tag">R (Intermediate)</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R (Intermediate)</span>
                 </div>
             </div>
 
@@ -1129,14 +1411,18 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        Comprehensive analysis of bike sales data to identify customer purchasing patterns across demographics, 
+                        Comprehensive analysis of bike sales data to identify customer purchasing patterns across
+                        demographics,
                         income levels, and commute distance, enabling data-driven marketing and sales strategies.
                     </p>
                     <ul class="project-highlights">
                         <li>Analyzed customer purchasing patterns across demographics and income levels</li>
-                        <li>Performed data cleaning, transformation, and validation to ensure accuracy and reliability</li>
-                        <li>Designed interactive dashboards in Power BI with slicers and KPIs to support business decision-making</li>
-                        <li>Generated actionable insights on target customer segments to improve marketing and sales strategies</li>
+                        <li>Performed data cleaning, transformation, and validation to ensure accuracy and reliability
+                        </li>
+                        <li>Designed interactive dashboards in Power BI with slicers and KPIs to support business
+                            decision-making</li>
+                        <li>Generated actionable insights on target customer segments to improve marketing and sales
+                            strategies</li>
                     </ul>
                     <div class="project-tags">
                         <span class="project-tag">Power BI</span>
@@ -1145,7 +1431,8 @@
                         <span class="project-tag">DAX</span>
                         <span class="project-tag">Data Visualization</span>
                     </div>
-                    <a href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <a href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank"
+                        rel="noopener noreferrer" class="project-link">
                         <span>View on GitHub</span>
                         <span>→</span>
                     </a>
@@ -1163,15 +1450,20 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        In-depth analysis of airline survey data to evaluate customer satisfaction trends by age, gender, 
-                        class, and travel type, delivering insights to enhance customer experience and loyalty strategies.
+                        In-depth analysis of airline survey data to evaluate customer satisfaction trends by age,
+                        gender,
+                        class, and travel type, delivering insights to enhance customer experience and loyalty
+                        strategies.
                     </p>
                     <ul class="project-highlights">
-                        <li>Conducted in-depth analysis of airline survey data to evaluate customer satisfaction trends</li>
+                        <li>Conducted in-depth analysis of airline survey data to evaluate customer satisfaction trends
+                        </li>
                         <li>Built dynamic Power BI dashboards using DAX and Power Query to visualize KPIs</li>
                         <li>Analyzed passenger counts, satisfaction levels, and frequent flyer data</li>
-                        <li>Identified key drivers of satisfaction including seat comfort, food & drink quality, and on-time performance</li>
-                        <li>Delivered data-driven recommendations to enhance customer experience and improve loyalty strategies</li>
+                        <li>Identified key drivers of satisfaction including seat comfort, food & drink quality, and
+                            on-time performance</li>
+                        <li>Delivered data-driven recommendations to enhance customer experience and improve loyalty
+                            strategies</li>
                     </ul>
                     <div class="project-tags">
                         <span class="project-tag">Power BI</span>
@@ -1180,10 +1472,144 @@
                         <span class="project-tag">Customer Analytics</span>
                         <span class="project-tag">KPI Development</span>
                     </div>
-                    <a href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <a href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer"
+                        class="project-link">
                         <span>View on GitHub</span>
                         <span>→</span>
                     </a>
+                </div>
+            </div>
+
+            <!-- Brainify AI Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Brainify AI Tutor</h3>
+                    <div class="project-meta">
+                        <span>🧠 Artificial Intelligence</span>
+                        <span>💻 Full-Stack Development</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        An advanced, AI-powered learning and quiz generation platform that automates assessment
+                        creation,
+                        manages student progress, and delivers customized educational content in real-time.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Integrated Groq AI API for automated, high-fidelity assessment and quiz generation based on
+                            user notes</li>
+                        <li>Built a secure user database using Supabase for user authentication, progress tracking, and
+                            leaderboard rankings</li>
+                        <li>Developed an interactive quiz dashboard with real-time feedback, detailed explanation
+                            review, and history tracking</li>
+                        <li>Implemented responsive state persistence and sleek UI widgets, creating a fluid, modern
+                            dashboard interface</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Groq AI</span>
+                        <span class="project-tag">Supabase</span>
+                        <span class="project-tag">API Integration</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://github.com/Vaibh31/Final-year-project" target="_blank"
+                            rel="noopener noreferrer" class="project-link">
+                            <span>View on GitHub</span>
+                            <span>→</span>
+                        </a>
+                        <a href="https://vaibh31.github.io/Final-year-project/" target="_blank"
+                            rel="noopener noreferrer" class="project-link"
+                            style="border-color: var(--accent-secondary); color: var(--accent-secondary); background: rgba(59, 130, 246, 0.1);">
+                            <span>Live Demo</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple & Fun Projects Sub-section -->
+        <div class="fun-projects-header">
+            <span class="section-tag">✨ Playground</span>
+            <h3>Simple & <span class="gradient-text">Fun Projects</span></h3>
+            <p>Small creative builds exploring web development, SQL, and interactive design.</p>
+        </div>
+
+        <div class="fun-projects-grid">
+            <!-- ShadeShift -->
+            <div class="fun-card">
+                <div class="fun-card-icon">🎨</div>
+                <h4>ShadeShift</h4>
+                <p>Interactive color generator featuring custom gradients, smart suggestions, and a color history panel
+                    for designers.</p>
+                <div class="fun-card-tags">
+                    <span class="fun-tag">HTML</span>
+                    <span class="fun-tag">CSS</span>
+                    <span class="fun-tag">JavaScript</span>
+                </div>
+                <div class="fun-card-links">
+                    <a href="https://github.com/Vaibh31/Shadeshift" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-github">GitHub →</a>
+                    <a href="https://vaibh31.github.io/Shadeshift/" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-live">Live Demo →</a>
+                </div>
+            </div>
+
+            <!-- Rolling Dice -->
+            <div class="fun-card">
+                <div class="fun-card-icon">🎲</div>
+                <h4>3D Rolling Dice</h4>
+                <p>A 3D interactive dice roller with smooth CSS animations, particle effects, and keyboard support for a
+                    fun experience.</p>
+                <div class="fun-card-tags">
+                    <span class="fun-tag">HTML</span>
+                    <span class="fun-tag">CSS 3D</span>
+                    <span class="fun-tag">JavaScript</span>
+                </div>
+                <div class="fun-card-links">
+                    <a href="https://github.com/Vaibh31/Rolling-dice" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-github">GitHub →</a>
+                    <a href="https://vaibh31.github.io/Rolling-dice/" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-live">Live Demo →</a>
+                </div>
+            </div>
+
+            <!-- Calculator -->
+            <div class="fun-card">
+                <div class="fun-card-icon">🧮</div>
+                <h4>Calculator</h4>
+                <p>A clean, responsive calculator performing basic arithmetic operations with a polished interface and
+                    smooth interactions.</p>
+                <div class="fun-card-tags">
+                    <span class="fun-tag">HTML</span>
+                    <span class="fun-tag">CSS</span>
+                    <span class="fun-tag">JavaScript</span>
+                </div>
+                <div class="fun-card-links">
+                    <a href="https://github.com/Vaibh31/Calculator-Project" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-github">GitHub →</a>
+                    <a href="https://vaibh31.github.io/Calculator-Project/" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-live">Live Demo →</a>
+                </div>
+            </div>
+
+            <!-- Counter Website -->
+            <div class="fun-card">
+                <div class="fun-card-icon">🔢</div>
+                <h4>Counter App</h4>
+                <p>A basic counter project showcasing event handling, DOM manipulation, and clean UI patterns in vanilla
+                    JavaScript.</p>
+                <div class="fun-card-tags">
+                    <span class="fun-tag">HTML</span>
+                    <span class="fun-tag">CSS</span>
+                    <span class="fun-tag">JavaScript</span>
+                </div>
+                <div class="fun-card-links">
+                    <a href="https://github.com/Vaibh31/Counter-website" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-github">GitHub →</a>
+                    <a href="https://vaibh31.github.io/Counter-website/" target="_blank" rel="noopener noreferrer"
+                        class="fun-link fun-link-live">Live Demo →</a>
                 </div>
             </div>
         </div>
@@ -1204,7 +1630,8 @@
                 <h3>Data Analytics Job Simulation</h3>
                 <div class="cert-issuer">Deloitte</div>
                 <div class="cert-date">May 2025</div>
-                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_wYQP6YKC4ZiG7p2sW_1746460684352_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_wYQP6YKC4ZiG7p2sW_1746460684352_completion_certificate.pdf"
+                    target="_blank" rel="noopener noreferrer" class="cert-link">
                     View Certificate →
                 </a>
             </div>
@@ -1214,7 +1641,8 @@
                 <h3>Data Visualisation: Empowering Business with Effective Insights</h3>
                 <div class="cert-issuer">Tata</div>
                 <div class="cert-date">May 2025</div>
-                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_wYQP6YKC4ZiG7p2sW_1748010529180_completion_certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_wYQP6YKC4ZiG7p2sW_1748010529180_completion_certificate.pdf"
+                    target="_blank" rel="noopener noreferrer" class="cert-link">
                     View Certificate →
                 </a>
             </div>
@@ -1224,7 +1652,8 @@
                 <h3>Google Data Analytics Certification</h3>
                 <div class="cert-issuer">Google</div>
                 <div class="cert-date">February 2025</div>
-                <a href="https://skillshop.credential.net/5292d8c2-aeef-4aa4-84c5-55a36a3530a6#acc.VYIqEjJ8" target="_blank" rel="noopener noreferrer" class="cert-link">
+                <a href="https://skillshop.credential.net/5292d8c2-aeef-4aa4-84c5-55a36a3530a6#acc.VYIqEjJ8"
+                    target="_blank" rel="noopener noreferrer" class="cert-link">
                     View Certificate →
                 </a>
             </div>
@@ -1234,7 +1663,18 @@
                 <h3>MySQL HeatWave Implementation Certified Associate</h3>
                 <div class="cert-issuer">Oracle</div>
                 <div class="cert-date">August 2025</div>
-                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=208FA396186D2E0DD11112417D10C0C5CF2CB76B239167AF0148393A21375674" target="_blank" rel="noopener noreferrer" class="cert-link">
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=208FA396186D2E0DD11112417D10C0C5CF2CB76B239167AF0148393A21375674"
+                    target="_blank" rel="noopener noreferrer" class="cert-link">
+                    View Certificate →
+                </a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon">🤝</div>
+                <h3>Effective Leadership Certification Course</h3>
+                <div class="cert-issuer">HP</div>
+                <div class="cert-date">June 2026</div>
+                <a href="effective-leadership.jpg" class="cert-link modal-cert">
                     View Certificate →
                 </a>
             </div>
@@ -1247,7 +1687,8 @@
             <span class="section-tag">Get In Touch</span>
             <h2 class="section-title">Let's Connect</h2>
             <p class="section-subtitle">
-                I'm currently seeking opportunities in data analytics. Let's discuss how I can help transform your data into insights.
+                I'm currently seeking opportunities in data analytics. Let's discuss how I can help transform your data
+                into insights.
             </p>
         </div>
         <div class="contact-container">
@@ -1295,6 +1736,15 @@
         </p>
     </footer>
 
+    <!-- Certificate Preview Modal -->
+    <div id="certModal" class="cert-modal">
+        <span class="cert-modal-close">&times;</span>
+        <div class="cert-modal-content-container">
+            <img class="cert-modal-content" id="certModalImg" alt="Certificate Image">
+            <div id="certModalCaption" class="cert-modal-caption"></div>
+        </div>
+    </div>
+
     <script>
         // Smooth scrolling with offset for fixed nav
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1302,11 +1752,11 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     const navHeight = document.querySelector('nav').offsetHeight;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -1327,12 +1777,12 @@
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-links a');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
+                if (window.pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1365,5 +1815,54 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const statNumbers = document.querySelectorAll('.stat-number');
-                    animateCounter(statNumbers[0], 9.08);
-                    animateCou
+                    animateCounter(statNumbers[0], 9.05);
+                    animateCounter(statNumbers[1], 5);
+                    animateCounter(statNumbers[2], 3);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(document.querySelector('.hero'));
+
+        // Certificate modal logic
+        const modal = document.getElementById('certModal');
+        const modalImg = document.getElementById('certModalImg');
+        const captionText = document.getElementById('certModalCaption');
+        const closeBtn = document.querySelector('.cert-modal-close');
+
+        document.querySelectorAll('.modal-cert').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const certCard = this.closest('.cert-card');
+                const title = certCard.querySelector('h3').textContent;
+                const issuer = certCard.querySelector('.cert-issuer').textContent;
+
+                modal.classList.add('show');
+                modalImg.src = this.getAttribute('href');
+                captionText.textContent = `${title} - ${issuer}`;
+                document.body.style.overflow = 'hidden'; // prevent background scrolling
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('cert-modal-content-container')) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
