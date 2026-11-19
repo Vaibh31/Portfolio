@@ -366,8 +366,8 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-category {
@@ -1197,6 +1197,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#certifications">Certifications</a></li>
@@ -1216,9 +1217,9 @@
                     Hello, I'm <span class="gradient-text">Vaibhavi Tikke</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Analytical and detail-oriented professional skilled in data analysis, visualization, and Power BI
-                    dashboard development,
-                    with experience turning raw data into actionable business insights.
+                    AI-skilled analyst who builds tools, not just reports. I've deployed 2 AI analytics apps
+                    (100% tested accuracy, scaling to 1M rows) and bring real-world experience in Power BI, SQL and
+                    Excel MIS reporting, helping teams make faster, data-driven decisions.
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1226,11 +1227,11 @@
                         <span class="stat-label">GPA</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">5</span>
-                        <span class="stat-label">Certifications</span>
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Live AI Apps</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">3</span>
+                        <span class="stat-number">6</span>
                         <span class="stat-label">Major Projects</span>
                     </div>
                 </div>
@@ -1274,7 +1275,8 @@
                 <p>
                     Currently pursuing my Bachelor of Computer Application at Gogte College of Commerce with an
                     outstanding 9.05 GPA,
-                    I specialize in Power BI dashboard development, ETL processes, and data modeling.
+                    I specialize in Power BI dashboards, SQL and Python analytics, and building AI-powered tools
+                    that turn raw data into decisions.
                 </p>
 
                 <div class="education-card">
@@ -1304,8 +1306,8 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <span>📧</span>
-                            <span><a href="mailto:vktikke2005@gmail.com">
-                                    vktikke2005@gmail.com
+                            <span><a href="mailto:vaibhavitikke@gmail.com">
+                                    vaibhavitikke@gmail.com
                                 </a></span>
                         </div>
                         <div class="contact-item">
@@ -1343,6 +1345,48 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <span class="section-tag">Experience</span>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">
+                Real-world reporting and analytics, using AI responsibly to work faster.
+            </p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Data Analyst <span style="font-weight:400; color: var(--text-muted); font-size: 0.8em;">· Part-time</span></h3>
+                    <div class="project-meta">
+                        <span>🏢 Upskill, Belgaum (Onsite)</span>
+                        <span>📅 Jul 2025 – Aug 2026</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <ul class="project-highlights">
+                        <li>Wrote complex SQL joins across 6 related tables (sales, orders, customers, products, returns,
+                            sales reps) with Claude and ChatGPT, sharing schema only, never business data</li>
+                        <li>Built Power BI dashboards with AI-assisted DAX measures (YTD, MoM growth, rolling averages,
+                            ranking) to track KPIs</li>
+                        <li>Streamlined 3 weekly Excel MIS reports using AI for complex formulas, cutting prep time from
+                            3 hours to 30 minutes</li>
+                        <li>Cleaned 60K+ records in Power Query and validated AI-generated queries against source data for
+                            accuracy</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">DAX</span>
+                        <span class="project-tag">Power Query</span>
+                        <span class="project-tag">Excel MIS</span>
+                        <span class="project-tag">AI-Assisted Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills">
         <div class="section-header">
@@ -1372,8 +1416,22 @@
                 <div class="skill-tags">
                     <span class="skill-tag">C Programming</span>
                     <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
                     <span class="skill-tag">Python</span>
+                    <span class="skill-tag">pandas</span>
                     <span class="skill-tag">R (Intermediate)</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>AI &amp; Apps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">LLMs (Groq)</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">Plotly</span>
+                    <span class="skill-tag">AI Evaluation</span>
                 </div>
             </div>
 
@@ -1396,46 +1454,122 @@
             <span class="section-tag">Portfolio</span>
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">
-                Real-world data analysis projects demonstrating my analytical capabilities and business impact.
+                Deployed AI analytics apps and data analysis projects, from raw data to decisions.
             </p>
         </div>
         <div class="projects-grid">
-            <!-- Bike Sales Analysis Project -->
+            <!-- AI Analytics Copilot -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Bike Sales Analysis Dashboard</h3>
+                    <h3>AI Analytics Copilot</h3>
                     <div class="project-meta">
-                        <span>📊 Power BI</span>
+                        <span>🤖 AI + Analytics</span>
+                        <span>📊 Decision Dashboard</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Upload any business spreadsheet and get a cleaned dataset, a decision-ready dashboard, an AI-written executive summary, and charts from plain-English questions, all in seconds.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Automated data cleaning with a full quality report: duplicates, missing values, messy labels and mixed date formats</li>
+                        <li>Decision engine that scores ~10 business questions per dataset (YoY growth, drivers, Pareto, seasonality, correlation) and leads with the most relevant charts and one-line takeaways</li>
+                        <li>LLM executive summary and natural-language charts; the AI sees only aggregated KPIs and returns a validated chart recipe, so no AI-generated code ever runs</li>
+                        <li>100% accuracy (20/20) on a custom evaluation test set; tested up to 1M rows, with caching cutting each click from ~3s to under 1s</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">pandas</span>
+                        <span class="project-tag">Plotly</span>
+                        <span class="project-tag">Streamlit</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">Groq LLM</span>
+                        <span class="project-tag">Data Cleaning</span>
+                        <span class="project-tag">EDA</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://github.com/Vaibh31/AI-analytics-copilot" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>View on GitHub</span>
+                            <span>→</span>
+                        </a>
+                        <a href="https://ai-analytics-copilot.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link"
+                            style="border-color: var(--accent-secondary); color: var(--accent-secondary); background: rgba(59, 130, 246, 0.1);">
+                            <span>Live Demo</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text-to-SQL AI Analyst -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Text-to-SQL AI Analyst</h3>
+                    <div class="project-meta">
+                        <span>🧠 Generative AI</span>
+                        <span>🗄️ SQL</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        A GenAI assistant that turns plain-English business questions into SQL, runs them safely, and shows the results as tables and charts.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Converts questions into SQLite queries (joins, aggregations, subqueries, CTEs) using LangChain and an LLM</li>
+                        <li>Prompt engineering with schema-only context, so the LLM never sees the actual data</li>
+                        <li>Read-only, SELECT-only guardrails block any query that could change data</li>
+                        <li>100% execution accuracy (30/30) on a custom evaluation test set; deployed on Streamlit Cloud</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">SQLite</span>
+                        <span class="project-tag">LangChain</span>
+                        <span class="project-tag">Groq LLM</span>
+                        <span class="project-tag">Streamlit</span>
+                        <span class="project-tag">Prompt Engineering</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://text-to-sql-ai-analyst.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link"
+                            style="border-color: var(--accent-secondary); color: var(--accent-secondary); background: rgba(59, 130, 246, 0.1);">
+                            <span>Live Demo</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Netflix SQL Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Netflix Data Analysis</h3>
+                    <div class="project-meta">
+                        <span>🗄️ PostgreSQL</span>
                         <span>📈 Data Analysis</span>
                     </div>
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        Comprehensive analysis of bike sales data to identify customer purchasing patterns across
-                        demographics,
-                        income levels, and commute distance, enabling data-driven marketing and sales strategies.
+                        SQL analysis of the Netflix catalogue to uncover trends in content, genres, ratings, countries and release years.
                     </p>
                     <ul class="project-highlights">
-                        <li>Analyzed customer purchasing patterns across demographics and income levels</li>
-                        <li>Performed data cleaning, transformation, and validation to ensure accuracy and reliability
-                        </li>
-                        <li>Designed interactive dashboards in Power BI with slicers and KPIs to support business
-                            decision-making</li>
-                        <li>Generated actionable insights on target customer segments to improve marketing and sales
-                            strategies</li>
+                        <li>Analyzed 8,800+ Netflix titles using PostgreSQL</li>
+                        <li>Solved 15+ business problems using CTEs, window functions, subqueries, aggregate and string functions</li>
+                        <li>Generated insights on content distribution, country-wise trends and audience preferences</li>
                     </ul>
                     <div class="project-tags">
-                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">PostgreSQL</span>
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">CTEs</span>
+                        <span class="project-tag">Window Functions</span>
                         <span class="project-tag">Data Analysis</span>
-                        <span class="project-tag">Excel</span>
-                        <span class="project-tag">DAX</span>
-                        <span class="project-tag">Data Visualization</span>
                     </div>
-                    <a href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank"
-                        rel="noopener noreferrer" class="project-link">
-                        <span>View on GitHub</span>
-                        <span>→</span>
-                    </a>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://github.com/Vaibh31/Netflix-data-analysis-using-sql" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <span>View on GitHub</span>
+                            <span>→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -1527,6 +1661,45 @@
                     </div>
                 </div>
             </div>
+            <!-- Bike Sales Analysis Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Bike Sales Analysis Dashboard</h3>
+                    <div class="project-meta">
+                        <span>📊 Power BI</span>
+                        <span>📈 Data Analysis</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        Comprehensive analysis of bike sales data to identify customer purchasing patterns across
+                        demographics,
+                        income levels, and commute distance, enabling data-driven marketing and sales strategies.
+                    </p>
+                    <ul class="project-highlights">
+                        <li>Analyzed customer purchasing patterns across demographics and income levels</li>
+                        <li>Performed data cleaning, transformation, and validation to ensure accuracy and reliability
+                        </li>
+                        <li>Designed interactive dashboards in Power BI with slicers and KPIs to support business
+                            decision-making</li>
+                        <li>Generated actionable insights on target customer segments to improve marketing and sales
+                            strategies</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span class="project-tag">Power BI</span>
+                        <span class="project-tag">Data Analysis</span>
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">DAX</span>
+                        <span class="project-tag">Data Visualization</span>
+                    </div>
+                    <a href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank"
+                        rel="noopener noreferrer" class="project-link">
+                        <span>View on GitHub</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
         <!-- Simple & Fun Projects Sub-section -->
@@ -1693,11 +1866,11 @@
         </div>
         <div class="contact-container">
             <div class="contact-links">
-                <a href="mailto:vktikke2005@gmail.com" class="contact-link">
+                <a href="mailto:vaibhavitikke@gmail.com" class="contact-link">
                     <span class="contact-icon">📧</span>
                     <div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">Email</div>
-                        <div style="font-weight: 600;">vktikke2005@gmail.com</div>
+                        <div style="font-weight: 600;">vaibhavitikke@gmail.com</div>
                     </div>
                 </a>
 
@@ -1709,7 +1882,7 @@
                     </div>
                 </a>
 
-                <a href="https://linkedin.com" target="_blank" class="contact-link">
+                <a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer" class="contact-link">
                     <span class="contact-icon">💼</span>
                     <div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">LinkedIn</div>
@@ -1816,8 +1989,8 @@
                 if (entry.isIntersecting) {
                     const statNumbers = document.querySelectorAll('.stat-number');
                     animateCounter(statNumbers[0], 9.05);
-                    animateCounter(statNumbers[1], 5);
-                    animateCounter(statNumbers[2], 3);
+                    animateCounter(statNumbers[1], 2);
+                    animateCounter(statNumbers[2], 6);
                     observer.unobserve(entry.target);
                 }
             });
