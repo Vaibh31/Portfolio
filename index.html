@@ -237,7 +237,8 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 .pcards.stage .pc-stage{position:sticky;overflow:visible;perspective:1800px;perspective-origin:50% 45%}
 .pcards.stage .pc-ring{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
 .pcards.stage .pcard{position:absolute;top:0;bottom:0;left:50%;width:var(--cw);margin:0 0 0 calc(var(--cw) / -2);min-height:0;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat}
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat;box-shadow:0 18px 40px -24px rgba(0,0,0,.8);will-change:transform,opacity}
+@media (max-width:900px){.pcards.stage .pcard{box-shadow:none}}
 .pcards:not(.stage) .pcard{position:relative;top:auto}
 .pcard{position:sticky;top:96px;min-height:72vh;margin-bottom:5vh;display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);
   padding:clamp(26px,3.6vw,52px);border-radius:24px;border:1px solid rgba(201,162,74,.22);
@@ -668,7 +669,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
     let H = 0, TOP = 0, SEG = 0, R = 0, on = false;
     const layout = () => {
       deck.classList.remove('stage'); stage.style.height = ''; stage.style.top = ''; deck.style.height = '';
-      ring.style.transform = ''; cards.forEach(c => { c.style.transform = ''; c.style.setProperty('--dim', 0); c.style.pointerEvents = ''; });
+      ring.style.transform = ''; cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; c.style.setProperty('--dim', 0); c.style.pointerEvents = ''; });
       const W = innerWidth <= 900 ? innerWidth - 28 : Math.min(940, innerWidth * 0.8);
       deck.style.setProperty('--cw', W + 'px');
       deck.classList.add('stage');
@@ -679,29 +680,38 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
       on = !reduce && H <= innerHeight - topbar - 12;
       if (!on) { deck.classList.remove('stage'); return; }
       TOP = Math.max(topbar, (innerHeight - H) / 2 + topbar / 2);
-      SEG = innerHeight * 0.9;
+      SEG = innerHeight * (innerWidth <= 900 ? 0.55 : 0.7);
       R = (W * 0.62) / Math.tan((STEP / 2) * Math.PI / 180);  // radius so neighbours sit just beside each other
       stage.style.top = TOP + 'px'; stage.style.height = H + 'px';
       deck.style.height = (H + SEG * (n - 1) + innerHeight * 0.25) + 'px';
       cards.forEach((c, i) => c.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`);
     };
-    const settle = p => { const f = Math.floor(p), t = p - f; return f + (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); };
-    let cur = 0, first = true, running = false;
-    const tick = () => {
+    // Snap: a small scroll past the current card is enough to turn the ring to the next one.
+    // The turn itself is a timed animation, so it stays smooth however the scroll arrives.
+    let active = 0, cur = 0, first = true, running = false, last = 0;
+    let lastP = 0;
+    const pick = () => {
+      const p = Math.max(0, Math.min(n - 1, (TOP - deck.getBoundingClientRect().top) / SEG));
+      if (p > lastP && p > active + 0.12) active = Math.min(n - 1, Math.floor(p - 0.12) + 1);        // scrolling down
+      else if (p < lastP && p < active - 0.12) active = Math.max(0, Math.ceil(p + 0.12) - 1);   // scrolling up
+      lastP = p;
+    };
+    const tick = (now) => {
       running = false; if (!on) return;
-      const scrolled = TOP - deck.getBoundingClientRect().top;
-      const target = settle(Math.max(0, Math.min(n - 1, scrolled / SEG)));
-      cur += (target - cur) * (first ? 1 : 0.14); first = false;
+      pick();
+      const k = first ? 1 : 1 - Math.pow(0.86, Math.min(4, (now - last) / 16.67 || 1)); last = now; first = false;
+      cur += (active - cur) * k;
+      if (Math.abs(active - cur) < 0.004) cur = active;
       ring.style.transform = `translateZ(${-R}px) rotateY(${(-cur * STEP).toFixed(3)}deg)`;
       cards.forEach((c, i) => {
-        const d = Math.abs(i - cur);                           // how far this card is from the front
-        c.style.setProperty('--dim', Math.min(0.7, d * 0.6).toFixed(3));
+        const d = Math.abs(i - cur);
+        c.style.opacity = Math.max(0.35, 1 - d * 0.55).toFixed(3);
         c.style.pointerEvents = d < 0.5 ? '' : 'none';
       });
-      if (Math.abs(target - cur) > 0.0005) { running = true; requestAnimationFrame(tick); }
+      if (cur !== active) { running = true; requestAnimationFrame(tick); }
     };
-    const kick = () => { if (!running) { running = true; requestAnimationFrame(tick); } };
-    layout(); tick();
+    const kick = () => { if (!running) { running = true; last = performance.now(); requestAnimationFrame(tick); } };
+    layout(); tick(performance.now());
     addEventListener('scroll', kick, { passive: true });
     addEventListener('resize', () => { layout(); first = true; kick(); });
     addEventListener('load', () => { layout(); first = true; kick(); });
