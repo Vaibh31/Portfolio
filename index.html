@@ -263,7 +263,11 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 @media (max-width:900px){
   /* Phones: compact cards that fit the screen, so they can stack like on a laptop */
   .pcard{grid-template-columns:1fr;top:74px;min-height:0;margin-bottom:6vh;padding:22px 20px;gap:14px;border-radius:18px}
-  .pcard .pc-list,.pcard .tags{display:none}
+  .pcard .pc-list{margin-top:.8rem;gap:.45rem}
+  .pcard .pc-list li{font-size:13px;line-height:1.45;padding-left:1.3rem}
+  .pcard .pc-list li:nth-child(n+3){display:none}
+  .pcard .tags{margin-top:0;gap:.3rem}
+  .pcard .tags span{font-size:9px;padding:.2rem .4rem}
   .pc-idx{font-size:2rem}
   .pcard h3{font-size:clamp(1.7rem,7.5vw,2.1rem);margin:.7rem 0 .4rem}
   .pcard .lede{font-size:1.05rem;line-height:1.35}
@@ -271,7 +275,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
   .pc-stats{grid-template-columns:1fr 1fr;gap:1rem}
   .pc-stats .big{font-size:2.3rem}
   .pc-stats p{font-size:12px;margin-top:.2rem}
-  .pcard .links{margin-top:0}
+  .pcard .links{margin-top:.8rem}
   .mrow{grid-template-columns:1fr auto;gap:.3rem 1rem}
   .mrow .label{display:none}
 }
