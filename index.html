@@ -595,9 +595,14 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
   // ---------- Project cards stack ----------
   (() => {
     const cards = [...document.querySelectorAll('.pcard')];
+    // A card taller than the screen (e.g. on phones) must not stick, or the next card
+    // would cover its bottom, where the Live demo / GitHub buttons are.
+    const fit = () => cards.forEach(c => { c.style.position = ''; if (c.offsetHeight > innerHeight - 110) c.style.position = 'relative'; });
+    fit(); addEventListener('resize', fit);
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const update = () => cards.forEach((c, i) => {
       const next = cards[i + 1]; if (!next) return;
+      if (c.style.position === 'relative') { c.style.transform = ''; c.style.filter = ''; return; }
       const t = Math.max(0, Math.min(1, 1 - (next.getBoundingClientRect().top - 96) / (innerHeight * 0.75)));
       c.style.transform = `scale(${1 - t * 0.07})`;
       c.style.filter = `brightness(${1 - t * 0.45})`;
