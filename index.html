@@ -238,11 +238,6 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 .pcard::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#04070d;opacity:var(--dim,0);pointer-events:none}
 .pcard{will-change:transform,translate}
 /* Cards slide in from alternating sides */
-@media (max-width:900px){
-  .js .pcard{opacity:0;translate:var(--from,0) 0;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate 1s cubic-bezier(.2,.7,.2,1)}
-  .js .pcard:nth-child(odd){--from:60px}.js .pcard:nth-child(even){--from:-60px}
-  .js .pcard.in{opacity:1;translate:0 0}
-}
 @media (prefers-reduced-motion:reduce){.js .pcard{opacity:1;translate:none}}
 .pc-idx{font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--gold)}
 .pcard h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.8vw,3.6rem);line-height:1.02;margin:1.2rem 0 .8rem}
@@ -266,12 +261,17 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 .mrow .go{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
 .mrow:hover .go{color:var(--gold)}
 @media (max-width:900px){
-  .pcard{grid-template-columns:1fr;position:relative;top:auto;min-height:0;margin-bottom:1.5rem}
-  .pc-side > div:last-child{order:-1}
-  .pc-side{justify-content:flex-start;gap:1.8rem}
-  .pc-side .tags{margin-top:0}
-  .pc-side{border-left:none;border-top:1px solid rgba(201,162,74,.2);padding:1.5rem 0 0}
-  .pc-stats{grid-template-columns:1fr 1fr}
+  /* Phones: compact cards that fit the screen, so they can stack like on a laptop */
+  .pcard{grid-template-columns:1fr;top:74px;min-height:0;margin-bottom:6vh;padding:22px 20px;gap:14px;border-radius:18px}
+  .pcard .pc-list,.pcard .tags{display:none}
+  .pc-idx{font-size:2rem}
+  .pcard h3{font-size:clamp(1.7rem,7.5vw,2.1rem);margin:.7rem 0 .4rem}
+  .pcard .lede{font-size:1.05rem;line-height:1.35}
+  .pc-side{justify-content:flex-start;gap:14px;border-left:none;border-top:1px solid rgba(201,162,74,.2);padding:14px 0 0}
+  .pc-stats{grid-template-columns:1fr 1fr;gap:1rem}
+  .pc-stats .big{font-size:2.3rem}
+  .pc-stats p{font-size:12px;margin-top:.2rem}
+  .pcard .links{margin-top:0}
   .mrow{grid-template-columns:1fr auto;gap:.3rem 1rem}
   .mrow .label{display:none}
 }
@@ -648,7 +648,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
     const cards = [...document.querySelectorAll('.pcard')];
     // A card taller than the screen (e.g. on phones) must not stick, or the next card
     // would cover its bottom, where the Live demo / GitHub buttons are.
-    const fit = () => cards.forEach(c => { c.style.position = ''; if (c.offsetHeight > innerHeight - 110) c.style.position = 'relative'; });
+    const fit = () => cards.forEach(c => { c.style.position = ''; if (c.offsetHeight > innerHeight - 80) c.style.position = 'relative'; });
     fit(); addEventListener('resize', fit);
     const slide = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); slide.unobserve(e.target); } }), { threshold: 0.12 });
     cards.forEach(c => slide.observe(c));
