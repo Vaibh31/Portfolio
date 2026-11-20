@@ -591,16 +591,37 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
       vid.style.transform = `scale(${1.08 + p * 0.35}) translateY(${scrollY * 0.18}px)`;
     }, { passive: true });
   }
-  // ---------- Keyboard scrolling: arrow keys, Page Up/Down, Space, Home/End ----------
-  addEventListener('keydown', (e) => {
-    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
-    const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
-    const page = innerHeight * 0.85;
-    const steps = { ArrowDown: 140, ArrowUp: -140, PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page };
-    if (e.key in steps) { e.preventDefault(); scrollBy({ top: steps[e.key], behavior: 'smooth' }); }
-    else if (e.key === 'Home') { e.preventDefault(); scrollTo({ top: 0, behavior: 'smooth' }); }
-    else if (e.key === 'End') { e.preventDefault(); scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' }); }
-  });
+  // ---------- Keyboard scrolling: smooth glide with arrow keys, Page Up/Down, Space, Home/End ----------
+  // One continuous eased motion instead of separate jumps, so holding a key glides smoothly.
+  (() => {
+    let target = null, cur = 0, raf = null;
+    const maxY = () => document.documentElement.scrollHeight - innerHeight;
+    const step = () => {
+      const d = target - cur;
+      if (Math.abs(d) < 0.6) { scrollTo({ top: target, behavior: 'instant' }); target = null; raf = null; return; }
+      cur += d * 0.12;
+      scrollTo({ top: cur, behavior: 'instant' });
+      raf = requestAnimationFrame(step);
+    };
+    const go = (to) => {
+      if (target === null) cur = scrollY;
+      target = Math.max(0, Math.min(maxY(), to));
+      if (!raf) raf = requestAnimationFrame(step);
+    };
+    const stop = () => { if (raf) cancelAnimationFrame(raf); raf = null; target = null; };
+    addEventListener('wheel', stop, { passive: true });
+    addEventListener('touchstart', stop, { passive: true });
+    addEventListener('mousedown', stop);
+    addEventListener('keydown', (e) => {
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+      const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      const base = target === null ? scrollY : target, page = innerHeight * 0.85;
+      const steps = { ArrowDown: 110, ArrowUp: -110, PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page };
+      if (e.key in steps) { e.preventDefault(); go(base + steps[e.key]); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0); }
+      else if (e.key === 'End') { e.preventDefault(); go(maxY()); }
+    });
+  })();
 
   // ---------- Project cards stack ----------
   (() => {
