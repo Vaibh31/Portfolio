@@ -232,6 +232,13 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 /* ===== Stacking project cards ===== */
 .work{overflow:clip}
 .pcards{padding-top:1rem;padding-bottom:4vh}
+/* Stage mode: the cards sit on a 3D ring that turns as you scroll, bringing the next card to the front */
+.pcards.stage{padding:0;position:relative}
+.pcards.stage .pc-stage{position:sticky;overflow:visible;perspective:1800px;perspective-origin:50% 45%}
+.pcards.stage .pc-ring{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.pcards.stage .pcard{position:absolute;top:0;bottom:0;left:50%;width:var(--cw);margin:0 0 0 calc(var(--cw) / -2);min-height:0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat}
+.pcards:not(.stage) .pcard{position:relative;top:auto}
 .pcard{position:sticky;top:96px;min-height:72vh;margin-bottom:5vh;display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);
   padding:clamp(26px,3.6vw,52px);border-radius:24px;border:1px solid rgba(201,162,74,.22);
   background:radial-gradient(90% 70% at 100% 0%,rgba(201,162,74,.12),transparent 55%),linear-gradient(160deg,#122c52 0%,#0b1d3a 55%,#08152b 100%);
@@ -428,7 +435,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
       <h2 class="serif mask"><span>Tools, <em>not just</em> reports.</span></h2>
     </div>
 
-    <div class="pcards" id="pcards">
+    <div class="pcards" id="pcards"><div class="pc-stage"><div class="pc-ring">
     <article class="pcard">
       <div class="pc-main">
         <div class="pc-top"><span class="pc-idx">01</span><span class="label pill">Live app · AI + Analytics</span></div>
@@ -465,7 +472,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
         <div><div class="tags"><span>PostgreSQL</span><span>SQL</span><span>Window functions</span></div><div class="links"><a class="btn ghost" href="https://github.com/Vaibh31/Netflix-data-analysis-using-sql" target="_blank" rel="noopener noreferrer">GitHub <span class="arr">↗</span></a></div></div>
       </aside>
     </article>
-    </div>
+    </div></div></div>
     <div class="more-head reveal"><span class="label muted">More work</span></div>
     <a class="mrow reveal" href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer"><span class="label muted">04</span><h4>Airline Passenger Satisfaction</h4><p>Power BI · DAX · Power Query</p><span class="go">View ↗</span></a>
     <a class="mrow reveal" href="https://vaibh31.github.io/Final-year-project/" target="_blank" rel="noopener noreferrer"><span class="label muted">05</span><h4>Brainify AI Tutor</h4><p>JavaScript · Groq AI · Supabase</p><span class="go">Live ↗</span></a>
@@ -649,39 +656,55 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
     addEventListener('keyup', (e) => { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') held = 0; });
   })();
 
-  // ---------- Project cards stack ----------
+  // ---------- Project cards: a 3D ring that turns as you scroll ----------
+  // The cards stand on a circle. While the section is pinned, scrolling turns the circle so
+  // the next card swings round to the front; the others wait at the sides, dimmed.
+  // If the cards don't fit the screen (very small phones) they simply scroll as a list.
   (() => {
-    const cards = [...document.querySelectorAll('.pcard')];
-    // A card taller than the screen (e.g. on phones) must not stick, or the next card
-    // would cover its bottom, where the Live demo / GitHub buttons are.
-    const fit = () => cards.forEach(c => { c.style.position = ''; if (c.offsetHeight > innerHeight - 80) c.style.position = 'relative'; });
-    fit(); addEventListener('resize', fit);
-    const slide = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); slide.unobserve(e.target); } }), { threshold: 0.12 });
-    cards.forEach(c => slide.observe(c));
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // Every frame, each card's slide / scale / dim eases toward where the scroll says it
-    // should be, so the motion stays smooth even when scroll events arrive in jumps.
-    const cur = cards.map(() => ({ x: 0, s: 0 })); let first = true, running = false;
+    const deck = document.getElementById('pcards'), stage = deck.querySelector('.pc-stage'), ring = deck.querySelector('.pc-ring');
+    const cards = [...deck.querySelectorAll('.pcard')], n = cards.length;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const STEP = 52;                                          // degrees between cards on the circle
+    let H = 0, TOP = 0, SEG = 0, R = 0, on = false;
+    const layout = () => {
+      deck.classList.remove('stage'); stage.style.height = ''; stage.style.top = ''; deck.style.height = '';
+      ring.style.transform = ''; cards.forEach(c => { c.style.transform = ''; c.style.setProperty('--dim', 0); c.style.pointerEvents = ''; });
+      const W = innerWidth <= 900 ? innerWidth - 28 : Math.min(940, innerWidth * 0.8);
+      deck.style.setProperty('--cw', W + 'px');
+      deck.classList.add('stage');
+      cards.forEach(c => c.style.bottom = 'auto');
+      H = Math.max(...cards.map(c => c.offsetHeight));        // natural card height at ring width
+      cards.forEach(c => c.style.bottom = '');
+      const topbar = innerWidth <= 900 ? 72 : 88;
+      on = !reduce && H <= innerHeight - topbar - 12;
+      if (!on) { deck.classList.remove('stage'); return; }
+      TOP = Math.max(topbar, (innerHeight - H) / 2 + topbar / 2);
+      SEG = innerHeight * 0.9;
+      R = (W * 0.62) / Math.tan((STEP / 2) * Math.PI / 180);  // radius so neighbours sit just beside each other
+      stage.style.top = TOP + 'px'; stage.style.height = H + 'px';
+      deck.style.height = (H + SEG * (n - 1) + innerHeight * 0.25) + 'px';
+      cards.forEach((c, i) => c.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`);
+    };
+    const settle = p => { const f = Math.floor(p), t = p - f; return f + (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); };
+    let cur = 0, first = true, running = false;
     const tick = () => {
-      const tops = cards.map(c => c.getBoundingClientRect().top);
-      const nearby = tops[0] < innerHeight * 2 && tops[cards.length - 1] > -innerHeight * 2;
-      let moving = false;
+      running = false; if (!on) return;
+      const scrolled = TOP - deck.getBoundingClientRect().top;
+      const target = settle(Math.max(0, Math.min(n - 1, scrolled / SEG)));
+      cur += (target - cur) * (first ? 1 : 0.14); first = false;
+      ring.style.transform = `translateZ(${-R}px) rotateY(${(-cur * STEP).toFixed(3)}deg)`;
       cards.forEach((c, i) => {
-        const stuck = c.style.position !== 'relative';
-        const tx = (i > 0 && stuck) ? (i % 2 ? -1 : 1) * Math.pow(Math.max(0, Math.min(1, (tops[i] - 96) / (innerHeight * 0.8))), 2) * 70 : 0;
-        const ts = (stuck && i < cards.length - 1) ? Math.max(0, Math.min(1, 1 - (tops[i + 1] - 96) / (innerHeight * 0.75))) : 0;
-        const k = first ? 1 : 0.2;
-        cur[i].x += (tx - cur[i].x) * k; cur[i].s += (ts - cur[i].s) * k;
-        if (Math.abs(tx - cur[i].x) > 0.02 || Math.abs(ts - cur[i].s) > 0.001) moving = true;
-        c.style.translate = Math.abs(cur[i].x) > 0.01 ? `${cur[i].x.toFixed(3)}vw 0` : '';
-        c.style.transform = cur[i].s > 0.0005 ? `scale(${(1 - cur[i].s * 0.07).toFixed(4)})` : '';
-        c.style.setProperty('--dim', (cur[i].s * 0.45).toFixed(3));
+        const d = Math.abs(i - cur);                           // how far this card is from the front
+        c.style.setProperty('--dim', Math.min(0.7, d * 0.6).toFixed(3));
+        c.style.pointerEvents = d < 0.5 ? '' : 'none';
       });
-      first = false;
-      if (moving) requestAnimationFrame(tick); else running = false;
+      if (Math.abs(target - cur) > 0.0005) { running = true; requestAnimationFrame(tick); }
     };
     const kick = () => { if (!running) { running = true; requestAnimationFrame(tick); } };
-    addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick); tick();
+    layout(); tick();
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', () => { layout(); first = true; kick(); });
+    addEventListener('load', () => { layout(); first = true; kick(); });
   })();
 
   // ---------- Scroll-driven rings ----------
