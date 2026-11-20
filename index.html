@@ -195,8 +195,8 @@ section > .wrap, section > .inner{position:relative;z-index:2}
 .contact{background:var(--deep);overflow:hidden;padding:clamp(7rem,16vh,11rem) 0 0}
 .contact::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 80% 20%,rgba(201,162,74,.18),transparent 60%),radial-gradient(50% 60% at 10% 90%,rgba(255,255,255,.06),transparent 60%)}
 .contact .inner{position:relative}
-.contact h2{font-size:clamp(3rem,7.4vw,7rem);max-width:13ch}
-.contact .email{display:inline-block;margin-top:2.4rem;font-family:var(--serif);font-size:clamp(1.6rem,3.2vw,2.6rem);border-bottom:1px solid rgba(255,255,255,.35);transition:border-color .3s,color .3s}
+.contact h2{font-size:clamp(2.4rem,5.2vw,4.8rem);max-width:16ch}
+.contact .email{display:inline-block;margin-top:2.4rem;font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,2rem);border-bottom:1px solid rgba(255,255,255,.35);transition:border-color .3s,color .3s}
 .contact .email:hover{color:var(--gold);border-color:var(--gold)}
 .socials{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
 footer{position:relative;margin-top:clamp(5rem,12vh,8rem);border-top:1px solid var(--line-dark);padding:1.6rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted-dark);font-size:13px}
@@ -602,12 +602,12 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
   (() => {
     const maxY = () => document.documentElement.scrollHeight - innerHeight;
     let pos = 0, v = 0, held = 0, target = null, raf = null, last = 0;
-    const SPEED = 15;                                   // px per frame at full speed (~900px/s)
+    const SPEED = 9;                                    // px per frame at full speed (~540px/s)
     const frame = (now) => {
       const k = Math.min(3, (now - last) / 16.67 || 1); last = now;
       if (target !== null) {                            // eased glide to a target
         const d = target - pos;
-        pos += d * (1 - Math.pow(0.88, k));
+        pos += d * (1 - Math.pow(0.92, k));
         if (Math.abs(d) < 0.5) { pos = target; target = null; }
       } else {                                          // momentum from arrow keys
         if (held) v += (held * SPEED - v) * (1 - Math.pow(0.86, k));
@@ -631,7 +631,7 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
       const page = innerHeight * 0.85;
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault(); const dir = e.key === 'ArrowDown' ? 1 : -1;
-        if (!e.repeat && held !== dir) v += dir * 10;      // a quick tap still moves a little
+        if (!e.repeat && held !== dir) v += dir * 7;      // a quick tap still moves a little
         held = dir; target = null; start(); return;
       }
       let to = null;
