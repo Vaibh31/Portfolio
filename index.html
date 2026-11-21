@@ -632,7 +632,7 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0 2rem}
   /* ---------- Silk light bundle + smooth scrolling ---------- */
   const cv=document.getElementById('ribbons'), ctx=cv.getContext('2d');
   const av=document.getElementById('aurora'), actx=av.getContext('2d');
-  let W=0,H=0,dpr=1,t=0,running=true,raf=0;
+  let M=false,B=0,W=0,H=0,dpr=1,t=0,running=true,raf=0;
   let sp=0, spT=0;                 /* page progress: target and eased */
   const sm=(a)=>{a=Math.max(0,Math.min(1,a)); return a*a*(3-2*a);};
   const COLS=[[227,194,122],[201,162,74],[227,194,122],[92,210,255],[47,107,255],[236,208,143]];
@@ -648,7 +648,7 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0 2rem}
       k.addColorStop(.8,`rgba(${r},${g},${b},${L.a})`); k.addColorStop(1,`rgba(${r},${g},${b},0)`); L.g=k; }
   }
   function size(){
-    dpr=Math.min(devicePixelRatio||1,1.5); W=innerWidth; H=innerHeight;
+    dpr=Math.min(devicePixelRatio||1,1.5); W=innerWidth; H=innerHeight; M=W<700; B=M?Math.min(H,W*.9):H;
     cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
     av.width=Math.ceil(W/8); av.height=Math.ceil(H/8); grads();
   }
@@ -658,8 +658,8 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0 2rem}
     const e=sm(sp/.16);
     const diag=H*(1.08-.98*Math.pow(u,1.35));
     const y0=H*(.56+.16*Math.sin(sp*Math.PI*1.6+.4));           // one slow rise and fall over the whole page
-    const tilt=(.5-u)*H*.22*Math.cos(sp*Math.PI*1.3);            // the band slowly tilts
-    const wave=Math.sin(u*Math.PI*1.05+sp*Math.PI*1.1+t*.12)*H*.05;
+    const tilt=(.5-u)*B*.22*Math.cos(sp*Math.PI*1.3);            // the band slowly tilts
+    const wave=Math.sin(u*Math.PI*1.05+sp*Math.PI*1.1+t*.12)*B*.05;
     const breathe=Math.sin(u*2.6+t*.3)*H*.015;                    // gentle idle motion
     return diag*(1-e)+(y0+tilt+wave)*e+breathe;
   }
@@ -668,23 +668,23 @@ footer{border-top:1px solid var(--line);padding:2.6rem 0 2rem}
        with its own phase, so the threads cross over each other like the reference.
        Scrolling pushes the waves along; easing keeps it smooth. */
     const e=sm(sp/.16);
-    const k=L.k*(.7+.3*e);                                       // gentler in the hero, fuller zig-zag further down
+    const k=M?.55+L.k*.12:L.k*(.7+.3*e);                         // phones: one long, calm wave                                       // gentler in the hero, fuller zig-zag further down
     const ph=L.ph+t*L.v+sp*Math.PI*7*L.d;                         // waves travel as you scroll
-    const amp=H*(.035+.03*e)*L.amp;
+    const amp=(M?B*.05:H*(.035+.03*e))*L.amp;
     const zig=Math.sin(u*Math.PI*2*k+ph)*amp+Math.sin(u*Math.PI*2*k*1.9-ph*.6)*amp*.25;
-    return c+L.off*H*.16+zig;
+    return c+L.off*(M?B*.22:H*.16)+zig;
   }
   const STEPS=140, cs=new Float32Array(STEPS+1);
   const dust=Array.from({length:60},()=>({u:Math.random(),o:(Math.random()-.5)*1.6,s:.0002+Math.random()*.0005,a:.25+Math.random()*.45}));
   function draw(){
     for(let i=0;i<=STEPS;i++) cs[i]=center(i/STEPS);
     ctx.clearRect(0,0,W,H); ctx.globalCompositeOperation='lighter'; ctx.lineCap='round';
-    for(const L of strands){
+    for(let n=0;n<strands.length;n++){ const L=strands[n]; if(M&&n%3) continue;   // phones: a third of the threads
       ctx.beginPath();
       for(let i=0;i<=STEPS;i++){ const u=i/STEPS, x=u*(W+40)-20, y=strandY(L,u,cs[i]); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
       ctx.strokeStyle=L.g; ctx.lineWidth=L.w; ctx.stroke();
     }
-    for(const p of dust){
+    if(!M) for(const p of dust){
       p.u+=p.s; if(p.u>1.05) p.u=-.05;
       const i=Math.max(0,Math.min(STEPS,Math.round(p.u*STEPS))), y=cs[i]+p.o*H*.22;
       ctx.globalAlpha=p.a*(.5+.5*Math.sin(t*3+p.o*40)); ctx.fillStyle='rgb(236,208,143)';
