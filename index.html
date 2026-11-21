@@ -5,423 +5,442 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vaibhavi Tikke | Data Analyst</title>
 <meta name="description" content="Vaibhavi Tikke, Data Analyst. SQL, Power BI, Excel and Python, building AI-powered analytics tools, not just reports.">
-<meta name="theme-color" content="#0b0a09">
+<meta name="theme-color" content="#040816">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0b0a09;          /* near-black */
-  --ink-2:#141311;
-  --paper:#f2eee6;        /* warm off-white */
-  --paper-2:#e8e2d6;
-  --deep:#0e2f57;         /* deep blue */
-  --gold:#c9a24a;         /* accent */
-  --line-dark:rgba(255,255,255,.14);
-  --line-light:rgba(11,10,9,.14);
-  --muted-dark:rgba(255,255,255,.62);
-  --muted-light:rgba(11,10,9,.6);
-  --serif:'Instrument Serif', 'Times New Roman', serif;
-  --sans:'Inter', system-ui, -apple-system, sans-serif;
-  --mono:'JetBrains Mono', ui-monospace, monospace;
-  --rail:56px;
+  /* Vaibhavi's palette: Electric Cobalt with gold */
+  --ink:#050a1a;
+  --ink-2:#081028;
+  --card:#0d1733;
+  --card-2:#13204a;
+  --navy:#1a3fa8;
+  --navy-2:#2f6bff;
+  --sky:#5cd2ff;
+  --gold:#c9a24a;
+  --gold-2:#e3c27a;
+  --paper:#f2eee6;
+  --line:rgba(255,255,255,.1);
+  --line-2:rgba(255,255,255,.17);
+  --text:#f4f1ea;
+  --muted:rgba(244,241,234,.75);
+  --faint:rgba(244,241,234,.5);
+  --serif:'Instrument Serif','Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --r:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--ink);color:#fff;font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:radial-gradient(1200px 700px at 85% -10%,rgba(36,84,220,.55),transparent 60%),radial-gradient(900px 600px at -10% 35%,rgba(201,162,74,.10),transparent 60%),radial-gradient(1000px 700px at 110% 70%,rgba(36,84,220,.35),transparent 60%),linear-gradient(180deg,#071030 0%,#050a1a 45%,#060d28 100%);background-attachment:fixed;color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--gold);color:var(--ink)}
+.wrap{width:min(1200px,100% - 2.5rem);margin:0 auto}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.02em}
+.muted{color:var(--muted)}
+.faint{color:var(--faint)}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.gold{color:var(--gold-2)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px;border-radius:8px}
 
-/* ---------- Shared pieces ---------- */
-.label{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.38rem .7rem;border-radius:3px;background:rgba(255,255,255,.12)}
-.light .pill{background:rgba(11,10,9,.07)}
-.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.02}
-.serif em{font-style:italic}
-.btn{display:inline-flex;align-items:center;gap:.7rem;padding:.55rem .55rem .55rem .85rem;background:var(--ink);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:transform .25s, border-color .25s, background .25s}
-.btn .arr{display:grid;place-items:center;width:22px;height:22px;border:1px solid rgba(255,255,255,.35);border-radius:3px;font-size:12px;transition:transform .25s, background .25s}
-.btn:hover{transform:translateY(-2px);border-color:var(--gold)}
-.btn:hover .arr{transform:translateX(3px);background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.btn.ghost{background:transparent}
-.light .btn.ghost{color:var(--ink);border-color:var(--line-light)}
-.light .btn.ghost .arr{border-color:rgba(11,10,9,.3)}
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;height:42px;padding:0 1.15rem;border-radius:999px;font-size:14px;font-weight:600;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s,box-shadow .3s,border-color .3s;white-space:nowrap}
+.btn-gold{background:var(--gold-2);color:#16110a;box-shadow:0 0 0 1px rgba(227,194,122,.5),0 10px 30px -10px rgba(227,194,122,.6)}
+.btn-gold:hover{transform:translateY(-2px);background:#ecd08f;box-shadow:0 0 0 1px rgba(227,194,122,.7),0 16px 40px -12px rgba(227,194,122,.75)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid var(--line-2);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{transform:translateY(-1px);background:#000}
+.btn .ic{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,.12);font-size:11px}
+.btn-ghost .ic{background:rgba(255,255,255,.1)}
 
-/* ---------- Frame: top bar + left rail (like a drafting grid) ---------- */
-.topbar{position:fixed;top:0;left:0;right:0;height:64px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 0;transition:background .4s}
-.topbar.scrolled{background:rgba(11,10,9,.92)}
-.topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line-dark)}
-.mark{width:var(--rail);height:64px;display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-style:italic;border-right:1px solid var(--line-dark)}
-.topnav{display:flex;gap:2rem;margin-left:2rem;margin-right:auto}
-.topnav a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dark);transition:color .2s}
-.topnav a:hover,.topnav a.active{color:#fff}
-.topnav a .n{color:var(--gold);margin-right:.35rem}
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(4,8,22,.72);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:15px}
+.logo{width:26px;height:26px;border-radius:7px;background:var(--gold-2);color:#16110a;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1}
+.links{display:flex;gap:1.6rem;font-size:13.5px;color:var(--muted)}
+.links a{transition:color .25s}
+.links a:hover,.links a.active{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.status{display:inline-flex;align-items:center;gap:.5rem;height:32px;padding:0 .8rem;border:1px solid var(--line-2);border-radius:999px;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 10px var(--gold-2);animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.nav .btn{height:34px;font-size:13px;padding:0 .95rem}
 
-.rail{position:fixed;top:64px;bottom:0;left:0;width:var(--rail);border-right:1px solid var(--line-dark);z-index:40;pointer-events:none}
-.rail .ticks{position:absolute;left:calc(var(--rail) - 9px);top:40px;display:flex;flex-direction:column;gap:22px}
-.rail .ticks i{display:block;width:8px;height:1px;background:rgba(255,255,255,.35)}
-.rail .progress{position:absolute;right:-1px;top:0;width:1px;height:0;background:var(--gold)}
-.chapter-now{position:fixed;left:0;width:var(--rail);top:200px;z-index:45;display:flex;align-items:center;gap:.6rem;color:#fff;mix-blend-mode:difference;writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-end}
-.chapter-now::before{content:"";width:18px;height:1px;background:currentColor}
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:7rem 0 4rem;isolation:isolate}
+#ribbons{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;opacity:var(--rib,1)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(4,8,22,.78) 0%,rgba(4,8,22,.35) 34%,rgba(4,8,22,0) 55%),
+  linear-gradient(180deg,rgba(4,8,22,0) 70%,var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:.55rem;height:28px;padding:0 .7rem;border:1px solid var(--line-2);border-radius:6px;background:rgba(4,8,22,.5);color:var(--muted)}
+.tag b{color:var(--text);font-weight:500}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(3.2rem,6.8vw,5.6rem);line-height:1;font-weight:700;letter-spacing:-.02em;margin:1.5rem 0 1.3rem;color:var(--text)}
+.hero h1 .it{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-style:italic;letter-spacing:-.02em;color:var(--gold-2)}
+.hero .lede{max-width:34ch;font-size:17px;color:var(--muted)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.hero .fine{margin-top:1.1rem;color:var(--faint)}
+
+/* Workflow panel */
+.panel{position:relative;border-radius:var(--r);background:linear-gradient(180deg,rgba(13,23,56,.78),rgba(6,11,32,.86));border:1px solid var(--line-2);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--line)}
+.panel-head .l{display:flex;gap:1rem;align-items:center}
+.run{color:var(--gold-2);display:flex;align-items:center;gap:.45rem}
+.flow{position:relative;height:270px}
+.flow svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.flow .edge{fill:none;stroke:rgba(244,241,234,.18);stroke-width:1.2}
+.flow .pulse{fill:none;stroke:var(--gold-2);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:14 400;filter:drop-shadow(0 0 4px rgba(227,194,122,.9));animation:travel 3.2s linear infinite}
+.flow .pulse.p2{animation-delay:.8s}.flow .pulse.p3{animation-delay:1.6s}.flow .pulse.p4{animation-delay:2.2s}.flow .pulse.p5{animation-delay:1.1s}
+@keyframes travel{from{stroke-dashoffset:414}to{stroke-dashoffset:0}}
+.node{position:absolute;transform:translate(-50%,-50%);padding:.55rem .7rem;border-radius:10px;background:var(--card-2);border:1px solid var(--line-2);min-width:104px;white-space:nowrap;box-shadow:0 10px 24px -14px rgba(0,0,0,.9)}
+.node strong{display:block;font-size:12.5px;font-weight:600}
+.node span{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.node.start{border-color:rgba(92,210,255,.45)}
+.node.end{border-color:rgba(227,194,122,.6);box-shadow:0 0 0 1px rgba(227,194,122,.25),0 0 30px -6px rgba(227,194,122,.45)}
+.node.end strong{color:var(--gold-2)}
+.chiplet{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-size:10px;padding:.1rem .4rem;border-radius:5px;background:var(--ink-2);border:1px solid var(--line-2);color:var(--muted)}
+.side-tools{position:absolute;left:12px;top:14px;display:grid;gap:6px}
+.side-tools i{display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-style:normal;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.log{border-top:1px solid var(--line);padding:.8rem 1.1rem 1rem}
+.log .row{display:grid;grid-template-columns:14px 1fr auto;gap:.6rem;align-items:center;padding:.28rem 0;font-family:var(--mono);font-size:11.5px;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.log .row.on{opacity:1;transform:none}
+.log .row i{width:6px;height:6px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 8px var(--gold-2)}
+.log .row b{font-weight:500;color:var(--text)}
+
+/* ---------- Status strip ---------- */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 2rem;padding:1.1rem 0;color:var(--muted)}
+.strip span{display:inline-flex;align-items:center;gap:.55rem}
+.strip i{width:6px;height:6px;border-radius:50%;background:var(--gold-2)}
 
 /* ---------- Sections ---------- */
-section{position:relative;overflow:hidden;isolation:isolate}
-section > .wrap, section > .inner{position:relative;z-index:2}
+section.block{padding:clamp(5rem,11vh,8rem) 0}
+.eyebrow{color:var(--gold-2);opacity:.85;display:flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--gold)}
+.h2{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.04;font-weight:600;letter-spacing:-.03em;margin-top:1rem}
+.h2 .it{font-size:1.06em;background:linear-gradient(100deg,#f1d99c,#e3c27a 45%,#c9a24a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(227,194,122,.25))}
+.head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.head p{max-width:42ch;color:var(--muted)}
+.card{position:relative;background:linear-gradient(180deg,rgba(17,30,72,.78),rgba(10,18,46,.82));box-shadow:inset 0 1px 0 rgba(255,255,255,.05);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;transition:border-color .35s,transform .45s cubic-bezier(.2,.8,.2,1),background .35s}
+.card:hover{border-color:rgba(227,194,122,.35);box-shadow:0 20px 60px -30px rgba(227,194,122,.25),inset 0 1px 0 rgba(255,255,255,.07)}
+.card.lift:hover{transform:translateY(-4px)}
+.reveal{opacity:0;transform:translateY(24px);filter:blur(8px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none;filter:none}
+.no-js .reveal{opacity:1;transform:none;filter:none}
+/* aurora: soft blurred glow layer behind the ribbons */
+#aurora{position:fixed;inset:0;width:100vw;height:100vh;z-index:-3;pointer-events:none;opacity:var(--aur,.9)}
+/* ---------- Mini charts that animate in ---------- */
+.viz{margin-top:1rem;height:34px;display:flex;align-items:flex-end}
+.meter{position:relative;width:100%;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;align-self:center}
+.meter i{position:absolute;inset:0 auto 0 0;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--gold),var(--gold-2));box-shadow:0 0 14px rgba(227,194,122,.6);transition:width 1.6s cubic-bezier(.2,.7,.2,1) .2s}
+.in .meter i{width:var(--w)}
+.shrink{display:grid;gap:5px;width:100%;align-self:center}
+.shrink div{display:grid;grid-template-columns:28px 1fr;gap:.5rem;align-items:center;font-family:var(--mono);font-size:10px;color:var(--faint)}
+.shrink b{display:block;height:5px;border-radius:99px;background:rgba(255,255,255,.22);width:100%;transform-origin:left;transition:transform 1.5s cubic-bezier(.2,.7,.2,1) .3s}
+.shrink .after b{background:var(--gold-2);box-shadow:0 0 10px rgba(227,194,122,.6);transform:scaleX(1)}
+.in .shrink .after b{transform:scaleX(.167)}
+.cols{display:flex;align-items:flex-end;gap:4px;width:100%;height:100%}
+.cols span{flex:1;height:var(--h);border-radius:3px 3px 1px 1px;background:rgba(255,255,255,.1);transform:scaleY(.06);transform-origin:bottom;transition:transform .9s cubic-bezier(.2,.8,.2,1),background .6s}
+.in .cols span{transform:none}
+.in .cols span.on{background:linear-gradient(180deg,var(--gold-2),var(--gold));box-shadow:0 0 10px rgba(227,194,122,.45)}
+.spark{width:100%;height:100%;overflow:visible}
+.spark path{fill:none;stroke:var(--gold-2);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;filter:drop-shadow(0 0 4px rgba(227,194,122,.7));transition:stroke-dashoffset 2s cubic-bezier(.3,.6,.2,1) .2s}
+.spark .area{stroke:none;fill:url(#sparkFill);stroke-dasharray:none;filter:none;opacity:0;transition:opacity 1.2s ease 1s}
+.in .spark path{stroke-dashoffset:0}
+.in .spark .area{opacity:1}
+.stat{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.4rem}
+.stat p{grid-column:1/-1}
+.ring{width:38px;height:38px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:4}
+.ring .bg{stroke:rgba(255,255,255,.1)}
+.ring .fg{stroke:var(--gold-2);stroke-linecap:round;stroke-dasharray:100.5;stroke-dashoffset:100.5;filter:drop-shadow(0 0 4px rgba(227,194,122,.6));transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1) .3s}
+.in .ring .fg{stroke-dashoffset:var(--off,0)}
 
-/* Scroll-driven background rings: rotate and zoom as each section passes */
-.orb{position:absolute;z-index:0;pointer-events:none;width:min(1100px,120vw);aspect-ratio:1;left:var(--x,70%);top:var(--y,50%);
-     transform:translate(-50%,-50%) rotate(0deg) scale(.8);will-change:transform;color:#fff;opacity:.2}
-.light .orb{color:var(--ink);opacity:.14}
-.orb svg{width:100%;height:100%;display:block;overflow:visible}
-.orb .gold{color:var(--gold)}
-.light .orb .gold{color:var(--deep)}
-.orb.small{width:min(640px,90vw)}
-.orb.first{width:min(700px,85vw)}
-.orb.second{width:min(860px,100vw)}
-.orb.last{width:min(680px,85vw)}
-.orb-pin{position:absolute;left:0;right:0;z-index:0;pointer-events:none}
-.orb-stick{position:sticky;top:0;height:100vh;height:100svh}
-.numbers .orb,.work .orb{opacity:.42}
-.hero .orb{z-index:2;opacity:.22}
-.wrap{padding:0 clamp(24px,6vw,96px) 0 calc(var(--rail) + clamp(24px,6vw,96px));max-width:1440px}
-.light{background:var(--paper);color:var(--ink)}
-.light .muted{color:var(--muted-light)}
-.muted{color:var(--muted-dark)}
-.hair{height:1px;background:var(--line-dark)}
-.light .hair{background:var(--line-light)}
 
-/* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--deep)}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);opacity:.6;will-change:transform}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,25,48,.92) 0%,rgba(9,25,48,.55) 55%,rgba(9,25,48,.25) 100%),linear-gradient(0deg,rgba(11,10,9,.65),transparent 40%);z-index:1}
-.hero .grid-h{position:absolute;left:0;right:0;top:62%;height:1px;background:var(--line-dark);z-index:2}
-.hero .grid-v{position:absolute;top:0;bottom:0;right:14%;width:1px;background:var(--line-dark);z-index:2}
-.hero .spark{position:absolute;left:calc(var(--rail) - 6px);top:calc(62% - 6px);width:12px;height:12px;z-index:3;color:#fff;font-size:12px;line-height:12px;text-align:center}
-.hero .inner{position:relative;z-index:3;padding-top:64px}
-.hero h1{font-size:clamp(3rem,7.4vw,7rem);max-width:12ch}
-.hero .sub{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.7rem);line-height:1.2;margin-top:1.4rem;color:rgba(255,255,255,.85);max-width:30ch}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.4rem}
-.hero .below{position:relative;z-index:3;margin-top:clamp(3rem,9vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;max-width:780px}
-.hero .below p{font-size:16.5px;line-height:1.65;color:rgba(255,255,255,.82);max-width:54ch}
-/* Clean hero: no crossing grid lines, About sits neatly under the buttons */
-.hero .grid-h,.hero .grid-v,.hero .spark{display:none}
-.hero .below{display:block;max-width:none;margin-top:clamp(2.5rem,7vh,4.5rem)}
-.hero .below .pill{margin-bottom:1rem}
-.hero .below::before{content:"";display:block;width:min(520px,100%);height:1px;background:linear-gradient(90deg,rgba(201,162,74,.55),rgba(255,255,255,.08));margin-bottom:1.6rem}
-.open{display:inline-flex;align-items:center;gap:.55rem}
-.dot{width:7px;height:7px;border-radius:50%;background:#5ee0a0;box-shadow:0 0 0 0 rgba(94,224,160,.6);animation:ping 2s infinite}
-@keyframes ping{70%{box-shadow:0 0 0 9px rgba(94,224,160,0)}100%{box-shadow:0 0 0 0 rgba(94,224,160,0)}}
-
-/* Manifesto */
-.manifesto{padding:clamp(6rem,14vh,10rem) 0}
-.manifesto .line{font-size:clamp(2.6rem,6.5vw,6rem);display:block}
-.manifesto .line em{color:var(--deep)}
-.manifesto .intro{display:grid;grid-template-columns:200px 1fr;gap:2rem;margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--line-light)}
-.manifesto .intro p{font-size:1.15rem;max-width:58ch}
-.about-row{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;margin-top:2.2rem}
-.portrait{width:220px;aspect-ratio:4/5;object-fit:cover;border-radius:4px;filter:grayscale(.15) contrast(1.02);background:var(--paper-2)}
-.facts{list-style:none;display:grid;gap:.9rem}
-.facts li{display:grid;grid-template-columns:110px 1fr;gap:1rem;padding-bottom:.9rem;border-bottom:1px solid var(--line-light);font-size:15px}
-.facts li span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-light);padding-top:3px}
-
-/* Numbers */
-.numbers{padding:clamp(5rem,12vh,8rem) 0;background:var(--ink)}
-.num-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
-.num{padding:2rem 1.5rem 2rem 0;border-right:1px solid var(--line-dark)}
-.num:last-child{border-right:none}
-.num:not(:first-child){padding-left:1.5rem}
-.num .big{font-family:var(--serif);font-size:clamp(3rem,5.5vw,5.2rem);line-height:1}
-.num .big em{color:var(--gold)}
-.num p{margin-top:.8rem;font-size:14px;color:var(--muted-dark);max-width:24ch}
-
-/* Chapter heads */
-.chapter{padding-top:clamp(6rem,12vh,9rem)}
-.chapter-head{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:end;padding-bottom:2.5rem}
-.chapter-head h2{font-size:clamp(2.6rem,5.4vw,5rem)}
+/* Profile bento */
+.bento{display:grid;grid-template-columns:1.35fr 1fr;gap:1rem}
+.manifesto{font-size:clamp(2rem,3.8vw,3rem);line-height:1.08;font-weight:600;letter-spacing:-.03em}
+.manifesto .it{color:var(--gold-2)}
+.about p.body{margin-top:1.4rem;color:var(--muted);max-width:58ch}
+.hl{color:var(--text);box-shadow:inset 0 -.45em 0 rgba(201,162,74,.28)}
+.facts{list-style:none;display:grid}
+.facts li{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--line)}
+.facts li:last-child{border-bottom:0}
+.facts li span:first-child{font-family:var(--mono);font-size:11.5px;color:var(--faint);padding-top:.15rem}
+.facts a{color:var(--gold-2)}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+.num .big{font-size:clamp(2.2rem,3.6vw,3rem);font-weight:600;letter-spacing:-.04em;line-height:1}
+.num .big em{font-family:var(--serif);font-weight:400;color:var(--gold-2);font-style:italic}
+.num p{margin-top:.7rem;color:var(--muted);font-size:14px;line-height:1.45}
 
 /* Experience */
-.job{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:2.5rem 0;border-top:1px solid var(--line-light)}
-.job h3{font-family:var(--serif);font-weight:400;font-size:2.2rem;line-height:1.05}
-.job .meta{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.5rem 1.2rem}
-.points{list-style:none;margin-top:1.6rem;display:grid;gap:.85rem;max-width:72ch}
-.points li{position:relative;padding-left:1.6rem}
-.points li::before{content:"";position:absolute;left:0;top:.75em;width:.85rem;height:1px;background:currentColor;opacity:.55}
-.points b{font-weight:600}
+.job{display:grid;grid-template-columns:240px 1fr;gap:2rem}
+.job h3{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
+.job .co{color:var(--gold-2)}
+.points{list-style:none;display:grid;gap:.9rem;margin-top:1.2rem}
+.points li{position:relative;padding-left:1.4rem;color:var(--muted)}
+.points li::before{content:"→";position:absolute;left:0;color:var(--gold);font-family:var(--mono);font-size:13px;top:.1rem}
+.points b{color:var(--text);font-weight:600}
 
 /* Work */
-.work{background:var(--ink);padding-bottom:clamp(5rem,10vh,8rem)}
-.work .chapter-head{border-bottom:none}
-.project{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:3rem 0;border-top:1px solid var(--line-dark);position:relative}
-.project .idx{font-family:var(--serif);font-size:3.4rem;line-height:1;color:rgba(255,255,255,.25);transition:color .4s}
-.project:hover .idx{color:var(--gold)}
-.project h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.8vw,3.4rem);line-height:1.02}
-.project .lede{font-family:var(--serif);font-size:1.45rem;line-height:1.25;color:rgba(255,255,255,.82);margin-top:.8rem;max-width:42ch}
-.project .points{color:rgba(255,255,255,.86)}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem}
-.tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .55rem;border:1px solid var(--line-dark);border-radius:3px;color:var(--muted-dark)}
-.links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
-.project.feature{grid-template-columns:200px 1fr 300px}
-.proof{border-left:1px solid var(--line-dark);padding-left:1.5rem;align-self:start}
-.proof .big{font-family:var(--serif);font-size:4rem;line-height:1}
-.proof .big em{color:var(--gold)}
-.proof p{font-size:13.5px;color:var(--muted-dark);margin-top:.4rem}
-.proof .row + .row{margin-top:1.6rem}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.pcard{display:flex;flex-direction:column;overflow:hidden}
+.pcard .glow{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(227,194,122,.13),transparent 60%)}
+.pcard:hover .glow{opacity:1}
+.pc-top{display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-flex;align-items:center;height:24px;padding:0 .55rem;border-radius:6px;border:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.pcard h3{font-size:1.4rem;font-weight:600;letter-spacing:-.02em;margin:1.2rem 0 .5rem}
+.pcard .lede{color:var(--muted);font-size:15px}
+.pc-list{list-style:none;display:grid;gap:.5rem;margin:1.1rem 0;font-size:13.8px;color:var(--muted)}
+.pc-list li{position:relative;padding-left:1rem}
+.pc-list li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:auto}
+.stat{padding:.85rem;border-radius:12px;background:var(--ink-2);border:1px solid var(--line)}
+.stat .big{font-size:1.7rem;font-weight:600;letter-spacing:-.03em;line-height:1}
+.stat .big em{font-family:var(--serif);font-weight:400;font-style:italic;color:var(--gold-2)}
+.stat p{font-size:12px;color:var(--faint);line-height:1.35;margin-top:.35rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:1rem 0}
+.tags span{font-family:var(--mono);font-size:10.5px;padding:.2rem .5rem;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted)}
+.plinks{display:flex;gap:.5rem;flex-wrap:wrap}
+.plinks .btn{height:36px;font-size:13px}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.mrow{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.1rem 1.3rem}
+.mrow h4{font-size:1rem;font-weight:600}
+.mrow p{font-size:12.5px;color:var(--faint);font-family:var(--mono)}
+.mrow .go{color:var(--gold-2);font-family:var(--mono);font-size:12px;transition:transform .3s}
+.mrow:hover .go{transform:translate(2px,-2px)}
 
 /* Skills */
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-light)}
-.skill-col{padding:2rem 1.5rem 2.5rem 0;border-right:1px solid var(--line-light)}
-.skill-col:not(:first-child){padding-left:1.5rem}
-.skill-col:last-child{border-right:none}
-.skill-col h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin:.9rem 0 1.1rem}
-.skill-col ul{list-style:none;display:grid;gap:.45rem;font-size:15px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.skill .k{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(227,194,122,.12);border:1px solid rgba(227,194,122,.35);color:var(--gold-2);font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.skill h3{font-size:1.1rem;font-weight:600;margin:1rem 0 .8rem}
+.skill ul{list-style:none;display:grid;gap:.5rem;color:var(--muted);font-size:14.5px}
 
 /* Credentials */
-.creds{list-style:none;border-top:1px solid var(--line-light)}
-.cred{display:grid;grid-template-columns:200px 1fr 140px 120px;gap:2rem;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--line-light);transition:background .3s, padding .3s}
-.cred:hover{background:var(--paper-2);padding-left:.8rem}
-.cred .t{font-family:var(--serif);font-size:1.5rem;line-height:1.15}
-.cred .go{justify-self:end;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;gap:.5rem;align-items:center}
-.cred .go::after{content:"→";transition:transform .25s}
-.cred:hover .go::after{transform:translateX(4px)}
+.creds{list-style:none;padding:.5rem 1.2rem;border-radius:var(--r);border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(15,27,66,.8),rgba(8,15,40,.84));-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 40px 90px -50px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
+.creds li:last-child .cred{border-bottom:0}
+.cred{display:grid;grid-template-columns:180px 1fr 110px 40px;gap:1rem;align-items:center;padding:1.1rem .4rem;border-bottom:1px solid var(--line);transition:background .3s,padding .3s}
+.cred:hover{background:rgba(227,194,122,.06);padding-left:.9rem;border-radius:10px}
+.cred .issuer{display:flex;align-items:center;gap:.55rem}
+.cred .issuer::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 10px rgba(227,194,122,.7);flex:none}
+.cred .t{font-weight:500}
+.cred .go{color:var(--gold-2);text-align:right;font-family:var(--mono);font-size:12px}
+.play{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.play h4{font-size:1rem;font-weight:600}
+.play p{font-size:13.5px;color:var(--muted);margin:.4rem 0 1rem}
 
-/* Playground */
-.play{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-light);margin-top:1rem}
-.play a{padding:1.4rem 1.2rem 1.6rem 0;border-right:1px solid var(--line-light);display:block}
-.play a:not(:first-child){padding-left:1.2rem}
-.play a:last-child{border-right:none}
-.play h4{font-family:var(--serif);font-weight:400;font-size:1.6rem}
-.play p{font-size:14px;margin-top:.3rem}
-.play .label{margin-top:.9rem;display:inline-block}
-.play a:hover h4{font-style:italic}
-
-/* Contact */
-.contact{background:var(--deep);overflow:hidden;padding:clamp(7rem,16vh,11rem) 0 0}
-.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 80% 20%,rgba(201,162,74,.18),transparent 60%),radial-gradient(50% 60% at 10% 90%,rgba(255,255,255,.06),transparent 60%)}
-.contact .inner{position:relative}
-.contact h2{font-size:clamp(2.4rem,5.2vw,4.8rem);max-width:16ch}
-.contact .email{display:inline-block;margin-top:2.4rem;font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,2rem);border-bottom:1px solid rgba(255,255,255,.35);transition:border-color .3s,color .3s}
-.contact .email:hover{color:var(--gold);border-color:var(--gold)}
-.socials{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2.2rem}
-footer{position:relative;margin-top:clamp(5rem,12vh,8rem);border-top:1px solid var(--line-dark);padding:1.6rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted-dark);font-size:13px}
-footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
-
-/* ---------- Motion ---------- */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.js .reveal.in{opacity:1;transform:none}
-.js .mask{display:block;overflow:hidden}
-.js .mask > span{display:block;transform:translateY(105%);transition:transform 1.1s cubic-bezier(.2,.75,.15,1)}
-.js .mask.in > span{transform:none}
-.js .draw{transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.js .draw.in{transform:scaleX(1)}
-.hero .inner > *{animation:rise 1.1s cubic-bezier(.2,.75,.15,1) both}
-.hero .inner > *:nth-child(2){animation-delay:.12s}
-.hero .inner > *:nth-child(3){animation-delay:.24s}
-.hero .inner > *:nth-child(4){animation-delay:.36s}
-.hero .below{animation:rise 1.1s .5s cubic-bezier(.2,.75,.15,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-/* ===== Highlights ===== */
-.hl{color:var(--gold);font-weight:500}
-.hl-d{color:#9a7424;font-weight:600}
-.points b.g{color:#9a7424}
-.gold-t{color:#a8822e !important}
-.btn.gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.btn.gold .arr{border-color:rgba(11,10,9,.35)}
-.btn.gold:hover{background:#e0bd66;border-color:#e0bd66}
-.btn.gold:hover .arr{background:var(--ink);color:var(--gold);border-color:var(--ink)}
-
-/* ===== Stacking project cards ===== */
-.work{overflow:clip}
-.pcards{padding-top:1rem;padding-bottom:4vh}
-/* Stage mode: the cards sit on a 3D ring that turns as you scroll, bringing the next card to the front */
-.pcards.stage{padding:0;position:relative}
-.pcards.stage .pc-stage{position:sticky;overflow:visible;perspective:1800px;perspective-origin:50% 45%}
-.pcards.stage .pc-ring{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
-.pcards.stage .pcard{position:absolute;top:0;bottom:0;left:50%;width:var(--cw);margin:0 0 0 calc(var(--cw) / -2);min-height:0;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat;box-shadow:0 18px 40px -24px rgba(0,0,0,.8);will-change:transform,opacity}
-@media (max-width:900px){.pcards.stage .pcard{box-shadow:none}}
-.pcards:not(.stage) .pcard{position:relative;top:auto}
-.pcard{position:sticky;top:96px;min-height:72vh;margin-bottom:5vh;display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(24px,4vw,56px);
-  padding:clamp(26px,3.6vw,52px);border-radius:24px;border:1px solid rgba(201,162,74,.22);
-  background:radial-gradient(90% 70% at 100% 0%,rgba(201,162,74,.12),transparent 55%),linear-gradient(160deg,#122c52 0%,#0b1d3a 55%,#08152b 100%);
-  box-shadow:0 30px 80px -30px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06);transform-origin:50% 0;will-change:transform,filter}
-.pc-top{display:flex;align-items:center;gap:1rem}
-.pcard::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#04070d;opacity:var(--dim,0);pointer-events:none}
-.pcard{will-change:transform,translate}
-/* Cards slide in from alternating sides */
-@media (prefers-reduced-motion:reduce){.js .pcard{opacity:1;translate:none}}
-.pc-idx{font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--gold)}
-.pcard h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.8vw,3.6rem);line-height:1.02;margin:1.2rem 0 .8rem}
-.pcard .lede{font-family:var(--serif);font-size:clamp(1.2rem,1.6vw,1.5rem);line-height:1.3;color:rgba(255,255,255,.85);max-width:40ch}
-.pc-list{list-style:none;margin-top:1.6rem;display:grid;gap:.8rem;max-width:62ch}
-.pc-list li{position:relative;padding-left:1.6rem;font-size:15px;line-height:1.55;color:rgba(255,255,255,.78)}
-.pc-list li::before{content:"→";position:absolute;left:0;color:var(--gold)}
-.pc-side{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;border-left:1px solid rgba(201,162,74,.2);padding-left:clamp(20px,3vw,44px)}
-.pc-stats{display:grid;gap:1.8rem}
-.pc-stats .big{font-family:var(--serif);font-size:clamp(3.2rem,5vw,4.8rem);line-height:.95;color:#fff}
-.pc-stats .big em{color:var(--gold);font-style:normal}
-.pc-stats .stat:first-child .big{color:var(--gold)}
-.pc-stats p{font-size:13.5px;color:var(--muted-dark);margin-top:.4rem}
-.pcard .tags span{border-color:rgba(201,162,74,.3);color:rgba(232,211,160,.9)}
-.more-head{margin-top:3rem;padding-bottom:1rem}
-.mrow{display:grid;grid-template-columns:80px 1fr 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-top:1px solid var(--line-dark);transition:padding .35s,background .35s}
-.mrow:last-child{border-bottom:1px solid var(--line-dark)}
-.mrow:hover{padding-left:.9rem;background:rgba(201,162,74,.06)}
-.mrow h4{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.4vw,2.2rem)}
-.mrow p{font-size:14px;color:var(--muted-dark)}
-.mrow .go{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
-.mrow:hover .go{color:var(--gold)}
-@media (max-width:900px){
-  /* Phones: compact cards that fit the screen, so they can stack like on a laptop */
-  .pcard{grid-template-columns:1fr;top:74px;min-height:0;margin-bottom:6vh;padding:22px 20px;gap:14px;border-radius:18px}
-  .pcard .pc-list{margin-top:.8rem;gap:.45rem}
-  .pcard .pc-list li{font-size:13px;line-height:1.45;padding-left:1.3rem}
-  .pcard .pc-list li:nth-child(n+3){display:none}
-  .pcard .tags{margin-top:0;gap:.3rem}
-  .pcard .tags span{font-size:9px;padding:.2rem .4rem}
-  .pc-idx{font-size:2rem}
-  .pcard h3{font-size:clamp(1.7rem,7.5vw,2.1rem);margin:.7rem 0 .4rem}
-  .pcard .lede{font-size:1.05rem;line-height:1.35}
-  .pc-side{justify-content:flex-start;gap:14px;border-left:none;border-top:1px solid rgba(201,162,74,.2);padding:14px 0 0}
-  .pc-stats{grid-template-columns:1fr 1fr;gap:1rem}
-  .pc-stats .big{font-size:2.3rem}
-  .pc-stats p{font-size:12px;margin-top:.2rem}
-  .pcard .links{margin-top:.8rem}
-  .mrow{grid-template-columns:1fr auto;gap:.3rem 1rem}
-  .mrow .label{display:none}
-}
+/* ---------- Contact bento + footer ---------- */
+.cta{display:grid;grid-template-columns:1fr 1.6fr;gap:1rem}
+.cta .id{display:flex;flex-direction:column;justify-content:space-between;min-height:240px;overflow:hidden}
+.cta .id .big-mark{position:absolute;right:-6px;bottom:-40px;font-family:var(--serif);font-style:italic;font-size:200px;line-height:1;color:rgba(255,255,255,.035);pointer-events:none}
+.cta .id{background:radial-gradient(420px 260px at 100% 0%,rgba(36,84,220,.55),transparent 70%),linear-gradient(180deg,rgba(17,30,72,.85),rgba(9,16,42,.9))}
+.idtop{display:flex;align-items:center;gap:1rem}
+.avatar{width:60px;height:60px;border-radius:16px;flex:none;display:grid;place-items:center;background:linear-gradient(150deg,#f1d99c,#c9a24a);color:#16110a;font-family:var(--serif);font-style:italic;font-size:28px;box-shadow:0 0 0 4px rgba(227,194,122,.12),0 10px 30px -10px rgba(227,194,122,.55)}
+.idtop b{display:block;font-size:17px;font-weight:600}
+.idtop small{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.avail{display:inline-flex;align-items:center;gap:.45rem;margin-top:.35rem;font-family:var(--mono);font-size:10.5px;color:#9fe3b0;padding:.15rem .55rem;border-radius:999px;background:rgba(80,200,120,.1);border:1px solid rgba(80,200,120,.28)}
+.avail i{width:6px;height:6px;border-radius:50%;background:#6fdc8c;box-shadow:0 0 8px #6fdc8c;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.cta .id .quote{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold-2);margin-top:1.3rem;line-height:1.2}
+.idfacts{list-style:none;display:grid;gap:.55rem;margin-top:1.2rem;font-size:13.5px}
+.idfacts li{display:grid;grid-template-columns:92px 1fr;gap:.6rem;align-items:center;padding-bottom:.55rem;border-bottom:1px dashed rgba(255,255,255,.08)}
+.idfacts li span:first-child{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.idfacts a{color:var(--text);transition:color .25s}.idfacts a:hover{color:var(--gold-2)}
+.socials{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:2rem}
+.socials .row{display:flex;gap:.35rem}
+.socials .row a{display:grid;place-items:center;min-width:30px;height:26px;padding:0 .45rem;border-radius:6px;border:1px solid var(--line-2);font-family:var(--mono);font-size:11px;color:var(--muted);transition:color .25s,border-color .25s}
+.socials .row a:hover{color:var(--gold-2);border-color:var(--gold)}
+.goldcard{background:radial-gradient(500px 300px at 100% 0%,rgba(255,244,214,.55),transparent 60%),linear-gradient(160deg,#ecd08f 0%,#d8b45f 55%,#c9a24a 100%);color:#16110a;border:0;padding:2rem;display:flex;flex-direction:column}
+.gstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:auto;padding-top:1.6rem}
+.gstats div{padding:.9rem 1rem;border-radius:12px;background:rgba(255,250,236,.35);border:1px solid rgba(22,17,10,.12)}
+.gstats b{display:block;font-size:1.45rem;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.gstats span{font-family:var(--mono);font-size:10.5px;color:rgba(22,17,10,.62)}
+@media (max-width:640px){.gstats{grid-template-columns:1fr 1fr 1fr;gap:.4rem}.gstats div{padding:.7rem .6rem}.gstats b{font-size:1.1rem}}
+.goldcard .mono{color:rgba(22,17,10,.6)}
+.goldcard h2{font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.05;font-weight:600;letter-spacing:-.03em;margin-top:.8rem}
+.goldcard h2 .it{font-size:1.06em}
+.goldcard p{color:rgba(22,17,10,.72);margin-top:.6rem;max-width:52ch}
+.mailbar{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1.6rem;padding:.35rem .35rem .35rem 1.1rem;background:var(--paper);border-radius:999px;box-shadow:0 10px 30px -14px rgba(22,17,10,.6)}
+.mailbar span{color:#4a4336;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.status-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem 2rem;padding:1.4rem 0;color:var(--faint)}
+.status-row span{display:inline-flex;align-items:center;gap:.5rem}
+.status-row i{width:6px;height:6px;border-radius:50%;background:var(--gold-2)}
+footer{border-top:1px solid var(--line);padding:2.6rem 0 2rem}
+.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:2rem}
+.foot p{color:var(--muted);font-size:14px;max-width:34ch;margin-top:.8rem}
+.foot h5{font-family:var(--mono);font-weight:400;font-size:11.5px;color:var(--faint);margin-bottom:.8rem}
+.foot ul{list-style:none;display:grid;gap:.45rem;font-size:14px;color:var(--muted)}
+.foot ul a:hover{color:var(--gold-2)}
+.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-top:2.6rem;color:var(--faint)}
 
 /* ---------- Responsive ---------- */
-@media (max-width:1100px){
-  .project.feature{grid-template-columns:200px 1fr}
-  .proof{grid-column:2;border-left:none;border-top:1px solid var(--line-dark);padding:1.5rem 0 0;display:flex;gap:2.5rem}
-  .proof .row + .row{margin-top:0}
-  .about-row{grid-template-columns:200px 1fr}
-  .portrait{grid-column:2;width:180px}
+@media (max-width:1020px){
+  .links{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .panel{max-width:620px}
+  .projects,.skills,.play{grid-template-columns:1fr 1fr}
+  .projects .pcard:last-child{grid-column:1/-1}
+  .nums{grid-template-columns:1fr 1fr}
+  .more{grid-template-columns:1fr}
+  .cta,.bento{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
 }
-@media (max-width:860px){
-  :root{--rail:0px}
-  .rail,.chapter-now{display:none}
-  .topnav{display:none}
-  .mark{border-right:none;width:64px}
-  .wrap{padding:0 22px}
-  .manifesto .intro,.chapter-head,.job,.project,.project.feature,.about-row{grid-template-columns:1fr;gap:1rem}
-  .proof,.portrait{grid-column:auto}
-  .num-grid,.skills-grid,.play{grid-template-columns:1fr 1fr}
-  .num:nth-child(2),.skill-col:nth-child(2),.play a:nth-child(2){border-right:none}
-  .num:nth-child(3),.skill-col:nth-child(3),.play a:nth-child(3){padding-left:0}
-  .num:nth-child(n+3),.skill-col:nth-child(n+3),.play a:nth-child(n+3){border-top:1px solid var(--line-light)}
-  .num:nth-child(n+3){border-top-color:var(--line-dark)}
-  .cred{grid-template-columns:1fr auto;gap:.4rem 1rem}
-  .cred .issuer-col{grid-column:1}
-  .cred .label.when{display:none}
-  .cred .go{grid-row:1/3;grid-column:2}
-  .hero .below{grid-template-columns:1fr;gap:1rem}
-  .hero .below .pill{justify-self:start}
-  .hero .grid-v{display:none}
-}
-@media (max-width:520px){
-  .num-grid,.skills-grid,.play{grid-template-columns:1fr}
-  .num,.skill-col,.play a{border-right:none !important;padding-left:0 !important;border-top:1px solid var(--line-light)}
-  .num{border-top-color:var(--line-dark)}
+@media (max-width:640px){
+  .wrap{width:min(1200px,100% - 2rem)}
+  .status{display:none}
+  .projects,.skills,.play{grid-template-columns:1fr}
+  .projects .pcard:last-child{grid-column:auto}
+  .job{grid-template-columns:1fr;gap:.6rem}
+  .cred{grid-template-columns:1fr auto;gap:.2rem .8rem}
+  .cred .issuer{grid-column:1/-1}
+  .cred .when{display:none}
+  .tag-extra{display:none}
+  #ribbons{opacity:calc(var(--rib,1)*.55)}
+  .hero::after{background:linear-gradient(180deg,rgba(4,8,22,.55) 0%,rgba(4,8,22,.35) 50%,var(--ink) 100%)}
+  .panel-head .l .faint{display:none}
+  /* stack the workflow vertically on phones */
+  .flow{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:1rem}
+  .flow svg,.flow .chiplet,.side-tools{display:none}
+  .node{position:relative;left:auto!important;top:auto!important;transform:none;min-width:0;white-space:normal;padding:.65rem .75rem}
+  .node.start,.node.mid,.node.end{grid-column:1/-1}
+  .node:not(.end)::after{content:"↓";position:absolute;left:50%;bottom:-.95rem;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--gold-2)}
+  .flow{row-gap:1.15rem}
+  .facts li{grid-template-columns:1fr;gap:.15rem}
+  .strip .wrap,.status-row{flex-direction:column;gap:.5rem}
+  .foot{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important}
-  .js .reveal,.js .mask > span,.js .draw{opacity:1;transform:none}
-  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .log .row{opacity:1;transform:none}
 }
 </style>
 </head>
-<body>
+<body class="no-js">
 
-<!-- Frame -->
-<header class="topbar" id="topbar">
-  <a href="#top" class="mark" aria-label="Back to top">vt</a>
-  <nav class="topnav" aria-label="Chapters">
-    <a href="#about"><span class="n">01</span>Profile</a>
-    <a href="#experience"><span class="n">02</span>Experience</a>
-    <a href="#work"><span class="n">03</span>Work</a>
-    <a href="#skills"><span class="n">04</span>Skills</a>
-    <a href="#credentials"><span class="n">05</span>Credentials</a>
-  </nav>
-  <a href="#contact" class="btn">Hire me <span class="arr">→</span></a>
+<!-- Nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Back to top"><span class="logo">vt</span>Vaibhavi Tikke</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">Profile</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
+    </nav>
+    <div class="nav-right">
+      <span class="status mono"><span class="dot"></span>open to work</span>
+      <a href="#contact" class="btn btn-gold">Hire me</a>
+    </div>
+  </div>
 </header>
-<div class="rail" aria-hidden="true">
-  <div class="ticks"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="progress" id="railProgress"></div>
-</div>
-<div class="chapter-now label" id="chapterNow" aria-hidden="true">Intro</div>
 
 <!-- Hero -->
-<section class="hero" id="top" data-chapter="Intro">
-  <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-    <source src="earth.mp4" type="video/mp4">
-  </video>
-  <div class="grid-h"></div><div class="grid-v"></div><div class="spark">✦</div>
-  <div class="wrap inner">
-    <span class="label pill open"><span class="dot"></span>Open to Data Analyst roles</span>
-    <h1 class="serif" style="margin-top:1.6rem">Data that <em style="color:var(--gold)">decides.</em></h1>
-    <p class="sub">I'm Vaibhavi Tikke, an analyst who builds tools, not just reports.</p>
-    <div class="ctas">
-      <a href="#work" class="btn">See the work <span class="arr">→</span></a>
-      <a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer" class="btn ghost">LinkedIn <span class="arr">↗</span></a>
+<canvas id="aurora" aria-hidden="true"></canvas>
+<canvas id="ribbons" aria-hidden="true"></canvas>
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag mono"><span>▸</span><b>Open to Data Analyst roles</b><span class="faint tag-extra">/ SQL · Power BI · Python</span></span>
+      <h1>Data that <span class="it">decides.</span></h1>
+      <p class="lede">I'm Vaibhavi Tikke, an analyst who builds tools, not just reports.</p>
+      <div class="ctas">
+        <a href="#work" class="btn btn-gold">See the work <span class="ic">→</span></a>
+        <a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><span class="ic">↗</span>LinkedIn</a>
+      </div>
+      <p class="fine mono">BCA · CGPA 9.05 / Belgaum, India / schema-only AI, never business data</p>
+    </div>
+
+    <div class="panel" aria-label="How I work: from raw spreadsheet to decision">
+      <div class="panel-head mono">
+        <div class="l"><span class="muted">Raw spreadsheet → decision</span><span class="faint">4 steps / 1 branch</span></div>
+        <span class="run"><span class="dot"></span>running</span>
+      </div>
+      <div class="flow" id="flow">
+        <div class="side-tools" aria-hidden="true"><i>+</i><i>−</i><i>⤢</i></div>
+        <svg viewBox="0 0 600 270" preserveAspectRatio="none" aria-hidden="true">
+          <path class="edge" d="M127 135 C 147 135, 147 135, 167 135"/>
+          <path class="edge" d="M277 135 C 300 135, 300 70, 320 70"/>
+          <path class="edge" d="M277 135 C 300 135, 300 200, 320 200"/>
+          <path class="edge" d="M427 70 C 450 70, 450 135, 470 135"/>
+          <path class="edge" d="M427 200 C 450 200, 450 135, 470 135"/>
+          <path class="pulse" d="M127 135 C 147 135, 147 135, 167 135"/>
+          <path class="pulse p2" d="M277 135 C 300 135, 300 70, 320 70"/>
+          <path class="pulse p3" d="M277 135 C 300 135, 300 200, 320 200"/>
+          <path class="pulse p4" d="M427 70 C 450 70, 450 135, 470 135"/>
+          <path class="pulse p5" d="M427 200 C 450 200, 450 135, 470 135"/>
+        </svg>
+        <div class="node start" style="left:12%;top:50%"><strong>Raw spreadsheet</strong><span>60K+ rows</span></div>
+        <div class="node mid" style="left:37%;top:50%"><strong>Clean &amp; validate</strong><span>Power Query</span></div>
+        <div class="chiplet" style="left:50%;top:31%">sql</div>
+        <div class="chiplet" style="left:50%;top:69%">bi</div>
+        <div class="node b1" style="left:62%;top:26%"><strong>SQL · 6 tables</strong><span>joins, CTEs</span></div>
+        <div class="node b2" style="left:62%;top:74%"><strong>Power BI · DAX</strong><span>KPI dashboard</span></div>
+        <div class="node end" style="left:87%;top:50%"><strong>Decision</strong><span>shipped</span></div>
+      </div>
+      <div class="log" id="log">
+        <div class="row"><i></i><span>MIS report prep <b>3h → 30m</b></span><span class="faint">weekly</span></div>
+        <div class="row"><i></i><span>Text-to-SQL accuracy <b>30/30</b></span><span class="faint">test set</span></div>
+        <div class="row"><i></i><span>Analytics app scale <b>1M rows</b></span><span class="faint">&lt; 1s</span></div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Status strip -->
+<div class="strip mono">
+  <div class="wrap">
+    <span><i></i>open to data analyst roles</span>
+    <span><i></i>100% accuracy on a custom evaluation test set</span>
+    <span><i></i>AI sees the schema, never the business data</span>
+  </div>
+</div>
 
 <!-- 01 Profile -->
-<section class="light manifesto" id="about" data-chapter="01 Profile">
+<section class="block" id="about">
   <div class="wrap">
-    <span class="mask serif line"><span>Clean the data.</span></span>
-    <span class="mask serif line"><span>Find the <em>signal.</em></span></span>
-    <span class="mask serif line"><span>Ship the tool.</span></span>
-
-    <div class="intro reveal">
-      <span class="label muted">01 · Profile</span>
-      <p>I work across the whole path from raw spreadsheet to decision: cleaning and validating data, building dashboards and MIS reports, and turning repetitive analysis into <span class="hl-d">AI-powered tools</span>. I use AI responsibly: it sees only the <span class="hl-d">schema, never the business data</span>, and I check every result against the source.</p>
+    <div class="bento">
+      <div class="card about reveal">
+        <span class="eyebrow mono">01 · profile</span>
+        <p class="manifesto" style="margin-top:1.2rem">Clean the data.<br>Find the <span class="it">signal.</span><br>Ship the tool.</p>
+        <p class="body">I work across the whole path from raw spreadsheet to decision: cleaning and validating data, building dashboards and MIS reports, and turning repetitive analysis into <span class="hl">AI-powered tools</span>. I use AI responsibly: it sees only the <span class="hl">schema, never the business data</span>, and I check every result against the source.</p>
+      </div>
+      <div class="card reveal">
+        <ul class="facts">
+          <li><span>based in</span><span>Belgaum, Karnataka, India</span></li>
+          <li><span>education</span><span>BCA, Gogte College of Commerce · 2023–2026 · CGPA 9.05</span></li>
+          <li><span>focus</span><span>SQL · Power BI · Excel · Python · AI-assisted analytics</span></li>
+          <li><span>email</span><span><a href="mailto:vaibhavitikke@gmail.com">vaibhavitikke@gmail.com</a></span></li>
+        </ul>
+      </div>
     </div>
-    <div class="about-row reveal">
-      <span></span>
-      <ul class="facts">
-        <li><span>Based in</span><span>Belgaum, Karnataka, India</span></li>
-        <li><span>Education</span><span>BCA, Gogte College of Commerce · 2023–2026 · CGPA 9.05</span></li>
-        <li><span>Focus</span><span>SQL · Power BI · Excel · Python · AI-assisted analytics</span></li>
-        <li><span>Email</span><span><a href="mailto:vaibhavitikke@gmail.com">vaibhavitikke@gmail.com</a></span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Numbers -->
-<section class="numbers" data-chapter="01 Profile">
-  <div class="wrap">
-    <div class="num-grid">
-      <div class="num reveal"><div class="big"><span class="count" data-to="100">0</span><em>%</em></div><p>accuracy on a custom evaluation test set</p></div>
-      <div class="num reveal"><div class="big">3h<em>→</em>30m</div><p>weekly MIS report prep, streamlined with AI</p></div>
-      <div class="num reveal"><div class="big"><span class="count" data-to="60">0</span>K<em>+</em></div><p>records cleaned and validated in Power Query</p></div>
-      <div class="num reveal"><div class="big"><span class="count" data-to="1">0</span>M</div><p>rows handled by my analytics app</p></div>
+    <div class="nums">
+      <div class="card num reveal"><div class="big"><span class="count" data-to="100">0</span><em>%</em></div><p>accuracy on a custom evaluation test set</p><div class="viz" aria-hidden="true"><div class="meter" style="--w:100%"><i></i></div></div></div>
+      <div class="card num reveal"><div class="big">3h<em>→</em>30m</div><p>weekly MIS report prep, streamlined with AI</p><div class="viz" aria-hidden="true"><div class="shrink"><div><span>before</span><b></b></div><div class="after"><span>after</span><b></b></div></div></div></div>
+      <div class="card num reveal"><div class="big"><span class="count" data-to="60">0</span>K<em>+</em></div><p>records cleaned and validated in Power Query</p><div class="viz" aria-hidden="true"><div class="cols"><span style="--h:22%;transition-delay:0.30s"></span><span style="--h:30%;transition-delay:0.37s"></span><span style="--h:26%;transition-delay:0.44s"></span><span style="--h:38%;transition-delay:0.51s"></span><span style="--h:34%;transition-delay:0.58s"></span><span style="--h:46%;transition-delay:0.65s"></span><span style="--h:58%;transition-delay:0.72s" class="on"></span><span style="--h:52%;transition-delay:0.79s" class="on"></span><span style="--h:70%;transition-delay:0.86s" class="on"></span><span style="--h:64%;transition-delay:0.93s" class="on"></span><span style="--h:82%;transition-delay:1.00s" class="on"></span><span style="--h:100%;transition-delay:1.07s" class="on"></span></div></div></div>
+      <div class="card num reveal"><div class="big"><span class="count" data-to="1">0</span>M</div><p>rows handled by my analytics app</p><div class="viz" aria-hidden="true"><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3c27a" stop-opacity=".35"/><stop offset="1" stop-color="#e3c27a" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 30 L20 28 L40 29 L60 24 L80 25 L100 19 L120 20 L140 13 L160 14 L180 7 L200 3 L200 34 L0 34 Z"/><path d="M0 30 L20 28 L40 29 L60 24 L80 25 L100 19 L120 20 L140 13 L160 14 L180 7 L200 3"/></svg></div></div>
     </div>
   </div>
 </section>
 
 <!-- 02 Experience -->
-<section class="light chapter" id="experience" data-chapter="02 Experience" style="padding-bottom:clamp(5rem,10vh,7rem)">
+<section class="block" id="experience" style="padding-top:0">
   <div class="wrap">
-    <div class="chapter-head">
-      <span class="label muted reveal">02 · Experience</span>
-      <h2 class="serif mask"><span>Where I've <em>worked.</em></span></h2>
+    <div class="head reveal">
+      <div><span class="eyebrow mono">02 · experience</span><h2 class="h2">Where I've <span class="it">worked.</span></h2></div>
     </div>
-    <article class="job reveal">
+    <article class="card job reveal">
+      <div><span class="mono faint">Jul 2025 – Aug 2026</span></div>
       <div>
-        <span class="label muted">Jul 2025 – Aug 2026</span>
-      </div>
-      <div>
-        <h3>Data Analyst</h3>
-        <div class="meta"><span class="label">Upskill</span><span class="label muted">Part-time · Belgaum (Onsite)</span></div>
+        <h3>Data Analyst <span class="co">· Upskill</span></h3>
+        <p class="mono faint" style="margin-top:.4rem">Part-time · Belgaum (Onsite)</p>
         <ul class="points">
-          <li>Wrote complex <b class="g">SQL joins across 6 related tables</b> (sales, orders, customers, products, returns, sales reps) with Claude and ChatGPT, sharing schema only, never business data.</li>
-          <li>Built <b class="g">Power BI dashboards</b> with AI-assisted DAX measures (YTD, MoM growth, rolling averages, ranking) to track KPIs.</li>
-          <li>Streamlined <b class="g">3 weekly Excel MIS reports</b> using AI for complex formulas, cutting prep time from <b class="g">3 hours to 30 minutes</b>.</li>
-          <li>Cleaned <b class="g">60K+ records</b> in Power Query and validated AI-generated queries against source data for accuracy.</li>
+          <li>Wrote complex <b>SQL joins across 6 related tables</b> (sales, orders, customers, products, returns, sales reps) with Claude and ChatGPT, sharing schema only, never business data.</li>
+          <li>Built <b>Power BI dashboards</b> with AI-assisted DAX measures (YTD, MoM growth, rolling averages, ranking) to track KPIs.</li>
+          <li>Streamlined <b>3 weekly Excel MIS reports</b> using AI for complex formulas, cutting prep time from <b>3 hours to 30 minutes</b>.</li>
+          <li>Cleaned <b>60K+ records</b> in Power Query and validated AI-generated queries against source data for accuracy.</li>
         </ul>
       </div>
     </article>
@@ -429,376 +448,306 @@ footer em{font-family:var(--serif);font-size:1.15rem;color:#fff}
 </section>
 
 <!-- 03 Work -->
-<section class="work chapter" id="work" data-chapter="03 Work">
+<section class="block" id="work" style="padding-top:0">
   <div class="wrap">
-    <div class="chapter-head">
-      <span class="label muted reveal">03 · Selected work</span>
-      <h2 class="serif mask"><span>Tools, <em>not just</em> reports.</span></h2>
+    <div class="head reveal">
+      <div><span class="eyebrow mono">03 · selected work</span><h2 class="h2">Tools, <span class="it">not just</span> reports.</h2></div>
     </div>
-
-    <div class="pcards" id="pcards"><div class="pc-stage"><div class="pc-ring">
-    <article class="pcard">
-      <div class="pc-main">
-        <div class="pc-top"><span class="pc-idx">01</span><span class="label pill">Live app · AI + Analytics</span></div>
+    <div class="projects">
+      <article class="card pcard lift reveal"><span class="glow"></span>
+        <div class="pc-top"><span class="mono gold">01</span><span class="pill">Live app · AI + Analytics</span></div>
         <h3>AI Analytics Copilot</h3>
         <p class="lede">Upload any business spreadsheet. Get a cleaned dataset, a <span class="hl">decision-ready dashboard</span> and an AI-written executive summary, all in seconds.</p>
         <ul class="pc-list"><li>Automated data cleaning with a full quality report: duplicates, missing values, messy labels, mixed date formats.</li><li>A decision engine scores <span class="hl">~10 business questions</span> per dataset and leads with the most relevant charts.</li><li>The AI sees only aggregated KPIs and returns a validated chart recipe, so <span class="hl">no AI-written code ever runs</span>.</li></ul>
-      </div>
-      <aside class="pc-side">
-        <div class="pc-stats"><div class="stat"><div class="big">20<em>/</em>20</div><p>questions answered correctly in evaluation</p></div><div class="stat"><div class="big">1<em>M</em></div><p>rows tested, clicks under 1 second</p></div></div>
-        <div><div class="tags"><span>Python</span><span>pandas</span><span>Plotly</span><span>Streamlit</span><span>LangChain</span><span>Groq LLM</span></div><div class="links"><a class="btn gold" href="https://ai-analytics-copilot.streamlit.app" target="_blank" rel="noopener noreferrer">Live demo <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/Vaibh31/AI-analytics-copilot" target="_blank" rel="noopener noreferrer">GitHub <span class="arr">↗</span></a></div></div>
-      </aside>
-    </article>
-    <article class="pcard">
-      <div class="pc-main">
-        <div class="pc-top"><span class="pc-idx">02</span><span class="label pill">Live app · Generative AI</span></div>
+        <div class="stats"><div class="stat"><div class="big"><span class="count" data-to="20">0</span><em>/</em>20</div><svg class="ring" viewBox="0 0 38 38" aria-hidden="true"><circle class="bg" cx="19" cy="19" r="16"/><circle class="fg" cx="19" cy="19" r="16" style="--off:0"/></svg><p>questions answered correctly in evaluation</p></div><div class="stat"><div class="big">1<em>M</em></div><p>rows tested, clicks under 1 second</p></div></div>
+        <div class="tags"><span>Python</span><span>pandas</span><span>Plotly</span><span>Streamlit</span><span>LangChain</span><span>Groq LLM</span></div>
+        <div class="plinks"><a class="btn btn-gold" href="https://ai-analytics-copilot.streamlit.app" target="_blank" rel="noopener noreferrer">Live demo ↗</a><a class="btn btn-ghost" href="https://github.com/Vaibh31/AI-analytics-copilot" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      </article>
+      <article class="card pcard lift reveal"><span class="glow"></span>
+        <div class="pc-top"><span class="mono gold">02</span><span class="pill">Live app · Generative AI</span></div>
         <h3>Text-to-SQL AI Analyst</h3>
         <p class="lede">Ask a business question in plain English. Get the <span class="hl">SQL, the answer and a chart</span>.</p>
         <ul class="pc-list"><li>Turns questions into SQL (joins, aggregations, subqueries, CTEs) with LangChain and an LLM.</li><li>Schema-only prompting: <span class="hl">the model never sees the actual data</span>.</li><li>Read-only, SELECT-only guardrails block any query that could change data.</li></ul>
-      </div>
-      <aside class="pc-side">
-        <div class="pc-stats"><div class="stat"><div class="big">30<em>/</em>30</div><p>execution accuracy on a custom test set</p></div><div class="stat"><div class="big">0</div><p>rows of business data shared with the AI</p></div></div>
-        <div><div class="tags"><span>Python</span><span>SQL</span><span>SQLite</span><span>LangChain</span><span>Groq LLM</span><span>Streamlit</span></div><div class="links"><a class="btn gold" href="https://text-to-sql-ai-analyst.streamlit.app" target="_blank" rel="noopener noreferrer">Live demo <span class="arr">↗</span></a></div></div>
-      </aside>
-    </article>
-    <article class="pcard">
-      <div class="pc-main">
-        <div class="pc-top"><span class="pc-idx">03</span><span class="label pill">SQL analysis</span></div>
+        <div class="stats"><div class="stat"><div class="big"><span class="count" data-to="30">0</span><em>/</em>30</div><svg class="ring" viewBox="0 0 38 38" aria-hidden="true"><circle class="bg" cx="19" cy="19" r="16"/><circle class="fg" cx="19" cy="19" r="16" style="--off:0"/></svg><p>execution accuracy on a custom test set</p></div><div class="stat"><div class="big">0</div><p>rows of business data shared with the AI</p></div></div>
+        <div class="tags"><span>Python</span><span>SQL</span><span>SQLite</span><span>LangChain</span><span>Groq LLM</span><span>Streamlit</span></div>
+        <div class="plinks"><a class="btn btn-gold" href="https://text-to-sql-ai-analyst.streamlit.app" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div>
+      </article>
+      <article class="card pcard lift reveal"><span class="glow"></span>
+        <div class="pc-top"><span class="mono gold">03</span><span class="pill">SQL analysis</span></div>
         <h3>Netflix Data Analysis</h3>
         <p class="lede">PostgreSQL analysis of the Netflix catalogue: content, genres, ratings, countries and release trends.</p>
         <ul class="pc-list"><li>Solved <span class="hl">15+ business problems</span> with CTEs, window functions, subqueries, aggregate and string functions.</li><li>Insights on content mix, country-wise trends and audience preferences.</li></ul>
-      </div>
-      <aside class="pc-side">
-        <div class="pc-stats"><div class="stat"><div class="big">8,800<em>+</em></div><p>titles analysed</p></div><div class="stat"><div class="big">15<em>+</em></div><p>business problems solved</p></div></div>
-        <div><div class="tags"><span>PostgreSQL</span><span>SQL</span><span>Window functions</span></div><div class="links"><a class="btn ghost" href="https://github.com/Vaibh31/Netflix-data-analysis-using-sql" target="_blank" rel="noopener noreferrer">GitHub <span class="arr">↗</span></a></div></div>
-      </aside>
-    </article>
-    </div></div></div>
-    <div class="more-head reveal"><span class="label muted">More work</span></div>
-    <a class="mrow reveal" href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer"><span class="label muted">04</span><h4>Airline Passenger Satisfaction</h4><p>Power BI · DAX · Power Query</p><span class="go">View ↗</span></a>
-    <a class="mrow reveal" href="https://vaibh31.github.io/Final-year-project/" target="_blank" rel="noopener noreferrer"><span class="label muted">05</span><h4>Brainify AI Tutor</h4><p>JavaScript · Groq AI · Supabase</p><span class="go">Live ↗</span></a>
-    <a class="mrow reveal" href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank" rel="noopener noreferrer"><span class="label muted">06</span><h4>Bike Sales Analysis</h4><p>Power BI · Excel · DAX</p><span class="go">View ↗</span></a>
+        <div class="stats"><div class="stat"><div class="big"><span class="count" data-to="8800" data-fmt="comma">0</span><em>+</em></div><p>titles analysed</p></div><div class="stat"><div class="big"><span class="count" data-to="15">0</span><em>+</em></div><p>business problems solved</p></div></div>
+        <div class="tags"><span>PostgreSQL</span><span>SQL</span><span>Window functions</span></div>
+        <div class="plinks"><a class="btn btn-ghost" href="https://github.com/Vaibh31/Netflix-data-analysis-using-sql" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      </article>
+    </div>
+    <div class="more">
+      <a class="card mrow lift reveal" href="https://github.com/Vaibh31/Power-BI-Project" target="_blank" rel="noopener noreferrer"><span class="mono faint">04</span><div><h4>Airline Passenger Satisfaction</h4><p>Power BI · DAX · Power Query</p></div><span class="go">↗</span></a>
+      <a class="card mrow lift reveal" href="https://vaibh31.github.io/Final-year-project/" target="_blank" rel="noopener noreferrer"><span class="mono faint">05</span><div><h4>Brainify AI Tutor</h4><p>JavaScript · Groq AI · Supabase</p></div><span class="go">↗</span></a>
+      <a class="card mrow lift reveal" href="https://github.com/Vaibh31/Data-Analysis-Dashboard" target="_blank" rel="noopener noreferrer"><span class="mono faint">06</span><div><h4>Bike Sales Analysis</h4><p>Power BI · Excel · DAX</p></div><span class="go">↗</span></a>
+    </div>
   </div>
 </section>
 
 <!-- 04 Skills -->
-<section class="light chapter" id="skills" data-chapter="04 Skills">
+<section class="block" id="skills" style="padding-top:0">
   <div class="wrap">
-    <div class="chapter-head">
-      <span class="label muted reveal">04 · Skills</span>
-      <h2 class="serif mask"><span>The <em>toolkit.</em></span></h2>
+    <div class="head reveal">
+      <div><span class="eyebrow mono">04 · skills</span><h2 class="h2">The <span class="it">toolkit.</span></h2></div>
     </div>
-    <div class="skills-grid">
-      <div class="skill-col reveal"><span class="label muted">A</span><h3>Analysis &amp; BI</h3>
-        <ul><li>Power BI · DAX</li><li>Power Query</li><li>Excel · Pivot Tables</li><li>MIS Reporting</li><li>Data Visualization</li></ul></div>
-      <div class="skill-col reveal"><span class="label muted">B</span><h3>Data &amp; Code</h3>
-        <ul><li>SQL · PostgreSQL</li><li>Python · pandas</li><li>Plotly</li><li>Data Cleaning · ETL</li><li>EDA · Data Validation</li></ul></div>
-      <div class="skill-col reveal"><span class="label muted">C</span><h3>AI &amp; Apps</h3>
-        <ul><li>LangChain · LLMs</li><li>Prompt Engineering</li><li>AI Evaluation</li><li>Streamlit</li><li>AI-Assisted Analytics</li></ul></div>
-      <div class="skill-col reveal"><span class="label muted">D</span><h3>Ways of working</h3>
-        <ul><li>Stakeholder Management</li><li>Problem Solving</li><li>Attention to Detail</li><li>Collaboration</li><li>Time Management</li></ul></div>
+    <div class="skills">
+      <div class="card skill lift reveal"><span class="k">A</span><h3>Analysis &amp; BI</h3><ul><li>Power BI · DAX</li><li>Power Query</li><li>Excel · Pivot Tables</li><li>MIS Reporting</li><li>Data Visualization</li></ul></div>
+      <div class="card skill lift reveal"><span class="k">B</span><h3>Data &amp; Code</h3><ul><li>SQL · PostgreSQL</li><li>Python · pandas</li><li>Plotly</li><li>Data Cleaning · ETL</li><li>EDA · Data Validation</li></ul></div>
+      <div class="card skill lift reveal"><span class="k">C</span><h3>AI &amp; Apps</h3><ul><li>LangChain · LLMs</li><li>Prompt Engineering</li><li>AI Evaluation</li><li>Streamlit</li><li>AI-Assisted Analytics</li></ul></div>
+      <div class="card skill lift reveal"><span class="k">D</span><h3>Ways of working</h3><ul><li>Stakeholder Management</li><li>Problem Solving</li><li>Attention to Detail</li><li>Collaboration</li><li>Time Management</li></ul></div>
     </div>
   </div>
 </section>
 
 <!-- 05 Credentials -->
-<section class="light chapter" id="credentials" data-chapter="05 Credentials" style="padding-bottom:clamp(6rem,12vh,9rem)">
+<section class="block" id="credentials" style="padding-top:0">
   <div class="wrap">
-    <div class="chapter-head">
-      <span class="label muted reveal">05 · Credentials</span>
-      <h2 class="serif mask"><span>Verified, <em>not claimed.</em></span></h2>
+    <div class="head reveal">
+      <div><span class="eyebrow mono">05 · credentials</span><h2 class="h2">Verified, <span class="it">not claimed.</span></h2></div>
     </div>
-    <ul class="creds">
-      <li><a class="cred reveal" href="https://drive.google.com/file/d/1H34J5uQCdo2-Q8ZmHTWIy0rPX20H0Vlt/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">LeetCode</span><span class="t">SQL 50 Badge</span><span class="label muted when">Nov 2026</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="https://www.hackerrank.com/certificates/a60aa54212cc" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">HackerRank</span><span class="t">SQL (Intermediate)</span><span class="label muted when">Aug 2026</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="https://skillshop.credential.net/5292d8c2-aeef-4aa4-84c5-55a36a3530a6#acc.VYIqEjJ8" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">Google</span><span class="t">Data Analytics Professional Certificate</span><span class="label muted when">Feb 2025</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_wYQP6YKC4ZiG7p2sW_1746460684352_completion_certificate.pdf" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">Deloitte · Forage</span><span class="t">Data Analytics Job Simulation</span><span class="label muted when">May 2025</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_wYQP6YKC4ZiG7p2sW_1748010529180_completion_certificate.pdf" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">Tata · Forage</span><span class="t">Data Visualisation: Empowering Business with Effective Insights</span><span class="label muted when">May 2025</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=208FA396186D2E0DD11112417D10C0C5CF2CB76B239167AF0148393A21375674" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">Oracle</span><span class="t">MySQL HeatWave Implementation Certified Associate</span><span class="label muted when">Aug 2025</span><span class="go">View</span></a></li>
-      <li><a class="cred reveal" href="effective-leadership.jpg" target="_blank" rel="noopener noreferrer"><span class="label muted issuer-col">HP</span><span class="t">Effective Leadership Certification Course</span><span class="label muted when">Jun 2026</span><span class="go">View</span></a></li>
+    <ul class="creds reveal">
+      <li><a class="cred" href="https://drive.google.com/file/d/1H34J5uQCdo2-Q8ZmHTWIy0rPX20H0Vlt/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">LeetCode</span><span class="t">SQL 50 Badge</span><span class="mono faint when">Nov 2026</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="https://www.hackerrank.com/certificates/a60aa54212cc" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">HackerRank</span><span class="t">SQL (Intermediate)</span><span class="mono faint when">Aug 2026</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="https://skillshop.credential.net/5292d8c2-aeef-4aa4-84c5-55a36a3530a6#acc.VYIqEjJ8" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">Google</span><span class="t">Data Analytics Professional Certificate</span><span class="mono faint when">Feb 2025</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_wYQP6YKC4ZiG7p2sW_1746460684352_completion_certificate.pdf" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">Deloitte · Forage</span><span class="t">Data Analytics Job Simulation</span><span class="mono faint when">May 2025</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_wYQP6YKC4ZiG7p2sW_1748010529180_completion_certificate.pdf" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">Tata · Forage</span><span class="t">Data Visualisation: Empowering Business with Effective Insights</span><span class="mono faint when">May 2025</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=208FA396186D2E0DD11112417D10C0C5CF2CB76B239167AF0148393A21375674" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">Oracle</span><span class="t">MySQL HeatWave Implementation Certified Associate</span><span class="mono faint when">Aug 2025</span><span class="go">↗</span></a></li>
+      <li><a class="cred" href="effective-leadership.jpg" target="_blank" rel="noopener noreferrer"><span class="mono faint issuer">HP</span><span class="t">Effective Leadership Certification Course</span><span class="mono faint when">Jun 2026</span><span class="go">↗</span></a></li>
     </ul>
 
-    <div class="chapter-head" style="padding-top:5rem;padding-bottom:1rem">
-      <span class="label muted reveal">Playground</span>
-      <h3 class="serif mask" style="font-size:clamp(2rem,3.6vw,3rem)"><span>Small things I built <em>for fun.</em></span></h3>
+    <div class="head reveal" style="margin:4.5rem 0 1.6rem">
+      <div><span class="eyebrow mono">playground</span><h3 class="h2" style="font-size:clamp(1.8rem,3.2vw,2.6rem)">Small things I built <span class="it">for fun.</span></h3></div>
     </div>
     <div class="play">
-      <a class="reveal" href="https://vaibh31.github.io/Shadeshift/" target="_blank" rel="noopener noreferrer"><h4>ShadeShift</h4><p class="muted">Color and gradient generator with smart suggestions.</p><span class="label">Live ↗</span></a>
-      <a class="reveal" href="https://vaibh31.github.io/Rolling-dice/" target="_blank" rel="noopener noreferrer"><h4>3D Rolling Dice</h4><p class="muted">CSS 3D dice with particle effects.</p><span class="label">Live ↗</span></a>
-      <a class="reveal" href="https://vaibh31.github.io/Calculator-Project/" target="_blank" rel="noopener noreferrer"><h4>Calculator</h4><p class="muted">Clean, responsive calculator.</p><span class="label">Live ↗</span></a>
-      <a class="reveal" href="https://vaibh31.github.io/Counter-website/" target="_blank" rel="noopener noreferrer"><h4>Counter App</h4><p class="muted">Vanilla JS event handling.</p><span class="label">Live ↗</span></a>
+      <a class="card lift reveal" href="https://vaibh31.github.io/Shadeshift/" target="_blank" rel="noopener noreferrer"><h4>ShadeShift</h4><p>Color and gradient generator with smart suggestions.</p><span class="mono gold">live ↗</span></a>
+      <a class="card lift reveal" href="https://vaibh31.github.io/Rolling-dice/" target="_blank" rel="noopener noreferrer"><h4>3D Rolling Dice</h4><p>CSS 3D dice with particle effects.</p><span class="mono gold">live ↗</span></a>
+      <a class="card lift reveal" href="https://vaibh31.github.io/Calculator-Project/" target="_blank" rel="noopener noreferrer"><h4>Calculator</h4><p>Clean, responsive calculator.</p><span class="mono gold">live ↗</span></a>
+      <a class="card lift reveal" href="https://vaibh31.github.io/Counter-website/" target="_blank" rel="noopener noreferrer"><h4>Counter App</h4><p>Vanilla JS event handling.</p><span class="mono gold">live ↗</span></a>
     </div>
   </div>
 </section>
 
 <!-- Contact -->
-<section class="contact" id="contact" data-chapter="Contact">
-  <div class="wrap inner">
-    <span class="label pill reveal">Let's talk</span>
-    <h2 class="serif mask" style="margin-top:1.6rem"><span>Let's turn your data into <em>decisions.</em></span></h2>
-    <a class="email reveal" href="mailto:vaibhavitikke@gmail.com">vaibhavitikke@gmail.com</a>
-    <div class="socials reveal">
-      <a class="btn" href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arr">↗</span></a>
-      <a class="btn" href="https://github.com/Vaibh31" target="_blank" rel="noopener noreferrer">GitHub <span class="arr">↗</span></a>
+<section class="block" id="contact" style="padding-top:0;padding-bottom:0">
+  <div class="wrap">
+    <div class="cta">
+      <div class="card id reveal">
+        <span class="big-mark" aria-hidden="true">vt</span>
+        <div>
+          <div class="idtop">
+            <span class="avatar" aria-hidden="true">vt</span>
+            <div><b>Vaibhavi Tikke</b><small>Data Analyst · Belgaum, India</small><br><span class="avail"><i></i>available now · immediate joiner</span></div>
+          </div>
+          <p class="quote">Clean data, clear decisions.</p>
+          <ul class="idfacts">
+            <li><span>email</span><a href="mailto:vaibhavitikke@gmail.com">vaibhavitikke@gmail.com</a></li>
+            <li><span>linkedin</span><a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer">vaibhavi-tikke ↗</a></li>
+            <li><span>github</span><a href="https://github.com/Vaibh31" target="_blank" rel="noopener noreferrer">Vaibh31 ↗</a></li>
+            <li><span>stack</span><span>SQL · Power BI · Excel · Python</span></li>
+          </ul>
+        </div>
+        <div class="socials">
+          <span class="mono faint">stay in touch</span>
+          <span class="row">
+            <a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/Vaibh31" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+            <a href="mailto:vaibhavitikke@gmail.com" aria-label="Email">@</a>
+          </span>
+        </div>
+      </div>
+      <div class="card goldcard reveal">
+        <span class="mono">let's talk</span>
+        <h2>Let's turn your data into <span class="it">decisions.</span></h2>
+        <p>Open to Data Analyst roles. SQL, Power BI, Excel and Python, plus AI-powered tools that save teams hours every week.</p>
+        <div class="mailbar"><span>vaibhavitikke@gmail.com</span><a class="btn btn-ink" href="mailto:vaibhavitikke@gmail.com">Email me</a></div>
+        <div class="gstats"><div><b>3h → 30m</b><span>weekly MIS prep</span></div><div><b>60K+</b><span>records cleaned</span></div><div><b>30/30</b><span>text-to-SQL accuracy</span></div></div>
+      </div>
     </div>
-    <footer>
-      <em>Clean data, clear decisions.</em>
-      <span>© 2026 Vaibhavi Tikke · Data Analyst · Belgaum, India</span>
-    </footer>
+    <div class="status-row mono">
+      <span><i></i>open to data analyst roles</span>
+      <span><i></i>30/30 execution accuracy on a custom test set</span>
+      <span><i></i>Belgaum, India</span>
+    </div>
   </div>
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <span class="brand"><span class="logo">vt</span>Vaibhavi Tikke</span>
+          <p>Data Analyst. SQL, Power BI, Excel and Python, building AI-powered analytics tools, not just reports.</p>
+        </div>
+        <div><h5>navigate</h5><ul><li><a href="#about">Profile</a></li><li><a href="#experience">Experience</a></li><li><a href="#work">Work</a></li><li><a href="#skills">Skills</a></li><li><a href="#credentials">Credentials</a></li></ul></div>
+        <div><h5>work</h5><ul><li><a href="https://ai-analytics-copilot.streamlit.app" target="_blank" rel="noopener noreferrer">AI Analytics Copilot</a></li><li><a href="https://text-to-sql-ai-analyst.streamlit.app" target="_blank" rel="noopener noreferrer">Text-to-SQL AI Analyst</a></li><li><a href="https://github.com/Vaibh31/Netflix-data-analysis-using-sql" target="_blank" rel="noopener noreferrer">Netflix Data Analysis</a></li></ul></div>
+        <div><h5>profiles</h5><ul><li><a href="https://www.linkedin.com/in/vaibhavi-tikke-0a3bb4285/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="https://github.com/Vaibh31" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="mailto:vaibhavitikke@gmail.com">Email</a></li></ul></div>
+      </div>
+      <div class="legal mono"><span>© 2026 Vaibhavi Tikke · Data Analyst</span><span>built in Belgaum, India</span></div>
+    </div>
+  </footer>
 </section>
 
 <script>
-  document.documentElement.classList.add('js');
+(function(){
+  document.body.classList.remove('no-js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Reveal on scroll (fade/rise for blocks, masked slide-up for headlines)
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const group = [...el.parentElement.children].filter(c => c.classList.contains('reveal') || c.classList.contains('mask'));
-      el.style.transitionDelay = (Math.min(group.indexOf(el), 5) * 110) + 'ms';
-      if (el.classList.contains('mask')) el.firstElementChild.style.transitionDelay = el.style.transitionDelay;
-      el.classList.add('in');
-      io.unobserve(el);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .mask').forEach(el => io.observe(el));
+  /* Nav background on scroll + active link */
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',scrollY>20);
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  const links=[...document.querySelectorAll('.links a')];
+  const sio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)); }),{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>sio.observe(s));
 
-  // Count-up numbers
-  const counter = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target, to = +el.dataset.to, start = performance.now(), dur = 1400;
-      const tick = (t) => {
-        const p = Math.min((t - start) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(to * eased);
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      counter.unobserve(el);
-    });
-  }, { threshold: 0.6 });
-  document.querySelectorAll('.count').forEach(el => counter.observe(el));
+  /* Reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.05,rootMargin:'0px 0px 4% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4)*60+'ms'; io.observe(el); });
 
-  // Top bar background, rail progress, current chapter label, active nav link
-  const topbar = document.getElementById('topbar');
-  const progress = document.getElementById('railProgress');
-  const chapterNow = document.getElementById('chapterNow');
-  const sections = [...document.querySelectorAll('section[data-chapter]')];
-  const navLinks = [...document.querySelectorAll('.topnav a')];
-  const onScroll = () => {
-    const y = window.scrollY, max = document.documentElement.scrollHeight - innerHeight;
-    topbar.classList.toggle('scrolled', y > 40);
-    progress.style.height = (max > 0 ? (y / max) * 100 : 0) + '%';
-    let current = sections[0];
-    sections.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * 0.35) current = s; });
-    if (chapterNow.textContent !== current.dataset.chapter) chapterNow.textContent = current.dataset.chapter;
-    navLinks.forEach(a => a.classList.toggle('active', current.id && a.getAttribute('href') === '#' + current.id));
-  };
-  let oq = false;
-  addEventListener('scroll', () => { if (!oq) { oq = true; requestAnimationFrame(() => { oq = false; onScroll(); }); } }, { passive: true });
-  onScroll();
+  /* Counters */
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; const el=e.target,to=+el.dataset.to,t0=performance.now(),d=1400;
+    const st=t=>{const p=Math.min(1,(t-t0)/d); {const v=Math.round(to*(1-Math.pow(1-p,3))); el.textContent=el.dataset.fmt==='comma'?v.toLocaleString('en-US'):v;} if(p<1) requestAnimationFrame(st);};
+    reduce?el.textContent=(el.dataset.fmt==='comma'?to.toLocaleString('en-US'):to):requestAnimationFrame(st); cio.unobserve(el);
+  }),{threshold:.6});
+  document.querySelectorAll('.count').forEach(el=>cio.observe(el));
 
-  // Gentle parallax on the hero video
-  const vid = document.querySelector('.hero video');
-  if (vid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let vq = false;
-    addEventListener('scroll', () => {
-      if (vq || scrollY > innerHeight * 1.2) return; vq = true;
-      requestAnimationFrame(() => { vq = false; const p = Math.min(scrollY / innerHeight, 1);
-        vid.style.transform = `scale(${1.08 + p * 0.35}) translateY(${scrollY * 0.18}px)`; });
-    }, { passive: true });
+  /* Hero log rows appear one by one, then loop */
+  const rows=[...document.querySelectorAll('#log .row')];
+  if(reduce){ rows.forEach(r=>r.classList.add('on')); }
+  else{
+    let k=0; const tick=()=>{ if(k<rows.length){ rows[k++].classList.add('on'); setTimeout(tick,700);} else { setTimeout(()=>{ rows.forEach(r=>r.classList.remove('on')); k=0; setTimeout(tick,600); },4200);} };
+    setTimeout(tick,900);
   }
-  // ---------- Keyboard scrolling: smooth, momentum-style ----------
-  // Arrow keys: the page speeds up gently while the key is held and glides to a stop when
-  // released (no step-by-step jumps). Page Up/Down, Space, Home, End: one eased glide.
-  (() => {
-    const maxY = () => document.documentElement.scrollHeight - innerHeight;
-    let pos = 0, v = 0, held = 0, target = null, raf = null, last = 0;
-    const SPEED = 9;                                    // px per frame at full speed (~540px/s)
-    const frame = (now) => {
-      const k = Math.min(3, (now - last) / 16.67 || 1); last = now;
-      if (target !== null) {                            // eased glide to a target
-        const d = target - pos;
-        pos += d * (1 - Math.pow(0.92, k));
-        if (Math.abs(d) < 0.5) { pos = target; target = null; }
-      } else {                                          // momentum from arrow keys
-        if (held) v += (held * SPEED - v) * (1 - Math.pow(0.86, k));
-        else v *= Math.pow(0.9, k);
-        pos += v * k;
-      }
-      pos = Math.max(0, Math.min(maxY(), pos));
-      scrollTo({ top: pos, behavior: 'instant' });
-      if (target !== null || held || Math.abs(v) > 0.15) raf = requestAnimationFrame(frame);
-      else { raf = null; v = 0; }
-    };
-    const start = () => { if (!raf) { pos = scrollY; last = performance.now(); raf = requestAnimationFrame(frame); } };
-    const stop = () => { if (raf) cancelAnimationFrame(raf); raf = null; v = 0; held = 0; target = null; };
-    addEventListener('wheel', stop, { passive: true });
-    addEventListener('touchstart', stop, { passive: true });
-    addEventListener('mousedown', stop);
-    addEventListener('blur', () => { held = 0; });
-    addEventListener('keydown', (e) => {
-      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
-      const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
-      const page = innerHeight * 0.85;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        e.preventDefault(); const dir = e.key === 'ArrowDown' ? 1 : -1;
-        if (!e.repeat && held !== dir) v += dir * 7;      // a quick tap still moves a little
-        held = dir; target = null; start(); return;
-      }
-      let to = null;
-      if (e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) to = page;
-      else if (e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) to = -page;
-      if (to !== null) { e.preventDefault(); start(); target = Math.max(0, Math.min(maxY(), (target ?? pos) + to)); v = 0; return; }
-      if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); start(); target = e.key === 'Home' ? 0 : maxY(); v = 0; }
-    });
-    addEventListener('keyup', (e) => { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') held = 0; });
-  })();
 
-  // ---------- Project cards: a 3D ring that turns as you scroll ----------
-  // The cards stand on a circle. While the section is pinned, scrolling turns the circle so
-  // the next card swings round to the front; the others wait at the sides, dimmed.
-  // If the cards don't fit the screen (very small phones) they simply scroll as a list.
-  (() => {
-    const deck = document.getElementById('pcards'), stage = deck.querySelector('.pc-stage'), ring = deck.querySelector('.pc-ring');
-    const cards = [...deck.querySelectorAll('.pcard')], n = cards.length;
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const STEP = 52;                                          // degrees between cards on the circle
-    let H = 0, TOP = 0, SEG = 0, R = 0, on = false;
-    const layout = () => {
-      deck.classList.remove('stage'); stage.style.height = ''; stage.style.top = ''; deck.style.height = '';
-      ring.style.transform = ''; cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; c.style.setProperty('--dim', 0); c.style.pointerEvents = ''; });
-      const W = innerWidth <= 900 ? innerWidth - 28 : Math.min(940, innerWidth * 0.8);
-      deck.style.setProperty('--cw', W + 'px');
-      deck.classList.add('stage');
-      cards.forEach(c => c.style.bottom = 'auto');
-      H = Math.max(...cards.map(c => c.offsetHeight));        // natural card height at ring width
-      cards.forEach(c => c.style.bottom = '');
-      const topbar = innerWidth <= 900 ? 72 : 88;
-      on = !reduce && H <= innerHeight - topbar - 12;
-      if (!on) { deck.classList.remove('stage'); return; }
-      TOP = Math.max(topbar, (innerHeight - H) / 2 + topbar / 2);
-      SEG = innerHeight * (innerWidth <= 900 ? 0.55 : 0.7);
-      R = (W * 0.62) / Math.tan((STEP / 2) * Math.PI / 180);  // radius so neighbours sit just beside each other
-      stage.style.top = TOP + 'px'; stage.style.height = H + 'px';
-      deck.style.height = (H + SEG * (n - 1) + innerHeight * 0.25) + 'px';
-      cards.forEach((c, i) => c.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`);
-    };
-    // Snap: a small scroll past the current card is enough to turn the ring to the next one.
-    // The turn itself is a timed animation, so it stays smooth however the scroll arrives.
-    let active = 0, cur = 0, first = true, running = false, last = 0;
-    let lastP = 0;
-    const pick = () => {
-      const p = Math.max(0, Math.min(n - 1, (TOP - deck.getBoundingClientRect().top) / SEG));
-      if (p > lastP && p > active + 0.12) active = Math.min(n - 1, Math.floor(p - 0.12) + 1);        // scrolling down
-      else if (p < lastP && p < active - 0.12) active = Math.max(0, Math.ceil(p + 0.12) - 1);   // scrolling up
-      lastP = p;
-    };
-    const tick = (now) => {
-      running = false; if (!on) return;
-      pick();
-      const k = first ? 1 : 1 - Math.pow(0.86, Math.min(4, (now - last) / 16.67 || 1)); last = now; first = false;
-      cur += (active - cur) * k;
-      if (Math.abs(active - cur) < 0.004) cur = active;
-      ring.style.transform = `translateZ(${-R}px) rotateY(${(-cur * STEP).toFixed(3)}deg)`;
-      cards.forEach((c, i) => {
-        const d = Math.abs(i - cur);
-        c.style.opacity = Math.max(0.35, 1 - d * 0.55).toFixed(3);
-        c.style.pointerEvents = d < 0.5 ? '' : 'none';
-      });
-      if (cur !== active) { running = true; requestAnimationFrame(tick); }
-    };
-    const kick = () => { if (!running) { running = true; last = performance.now(); requestAnimationFrame(tick); } };
-    layout(); tick(performance.now());
-    addEventListener('scroll', kick, { passive: true });
-    addEventListener('resize', () => { layout(); first = true; kick(); });
-    addEventListener('load', () => { layout(); first = true; kick(); });
-  })();
+  /* Card glow follows the pointer */
+  document.querySelectorAll('.pcard').forEach(c=>c.addEventListener('pointermove',e=>{
+    const r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px');
+  }));
 
-  // ---------- Scroll-driven rings ----------
-  // Each ring is a "radial chart": concentric circles, a dashed orbit, tick marks
-  // and a ring of bars. It rotates and zooms as its section scrolls past.
-  function ringSVG(seed){
-    let r = seed * 9301 + 49297; const rand = () => (r = (r * 9301 + 49297) % 233280) / 233280;
-    const c = 500, parts = [];
-    [470, 380, 300, 205, 120].forEach((rad, i) =>
-      parts.push(`<circle cx="${c}" cy="${c}" r="${rad}" fill="none" stroke="currentColor" stroke-width="${i === 1 ? 1.4 : 1}" ${i === 2 ? 'stroke-dasharray="4 10"' : ''}/>`));
-    for (let i = 0; i < 120; i++) {               // tick marks on the outer ring
-      const a = i / 120 * Math.PI * 2, long = i % 10 === 0, r1 = 470, r2 = long ? 448 : 460;
-      parts.push(`<line x1="${c + Math.cos(a) * r1}" y1="${c + Math.sin(a) * r1}" x2="${c + Math.cos(a) * r2}" y2="${c + Math.sin(a) * r2}" stroke="currentColor" stroke-width="${long ? 1.6 : 1}"/>`);
+  /* ---------- Silk light bundle + smooth scrolling ---------- */
+  const cv=document.getElementById('ribbons'), ctx=cv.getContext('2d');
+  const av=document.getElementById('aurora'), actx=av.getContext('2d');
+  let W=0,H=0,dpr=1,t=0,running=true,raf=0;
+  let sp=0, spT=0;                 /* page progress: target and eased */
+  const sm=(a)=>{a=Math.max(0,Math.min(1,a)); return a*a*(3-2*a);};
+  const COLS=[[227,194,122],[201,162,74],[227,194,122],[92,210,255],[47,107,255],[236,208,143]];
+  const N=48;
+  const strands=Array.from({length:N},(_,i)=>{
+    const hi=i%9===0;
+    return { off:(i+.5)/N-.5, tw:(Math.random()-.5)*.35, ph:(i/N)*Math.PI*2.4+Math.random()*.6, k:1.8+Math.random()*.9, v:.12+Math.random()*.12, d:i%2?1:.8, amp:.7+Math.random()*.6,
+             c:COLS[i%COLS.length], w:hi?1.4:.9, a:hi?.75:.22+Math.random()*.2, g:null };
+  });
+  function grads(){
+    for(const L of strands){ const [r,g,b]=L.c, k=ctx.createLinearGradient(0,0,W,0);
+      k.addColorStop(0,`rgba(${r},${g},${b},0)`); k.addColorStop(.25,`rgba(${r},${g},${b},${L.a})`);
+      k.addColorStop(.8,`rgba(${r},${g},${b},${L.a})`); k.addColorStop(1,`rgba(${r},${g},${b},0)`); L.g=k; }
+  }
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,1.5); W=innerWidth; H=innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    av.width=Math.ceil(W/8); av.height=Math.ceil(H/8); grads();
+  }
+  /* The centre line: a diagonal sweep in the hero that eases into one slow, wide wave.
+     Everything is driven by low-frequency curves so it glides instead of zig-zagging. */
+  function center(u){
+    const e=sm(sp/.16);
+    const diag=H*(1.08-.98*Math.pow(u,1.35));
+    const y0=H*(.56+.16*Math.sin(sp*Math.PI*1.6+.4));           // one slow rise and fall over the whole page
+    const tilt=(.5-u)*H*.22*Math.cos(sp*Math.PI*1.3);            // the band slowly tilts
+    const wave=Math.sin(u*Math.PI*1.05+sp*Math.PI*1.1+t*.12)*H*.05;
+    const breathe=Math.sin(u*2.6+t*.3)*H*.015;                    // gentle idle motion
+    return diag*(1-e)+(y0+tilt+wave)*e+breathe;
+  }
+  function strandY(L,u,c){
+    /* zig-zag weave: every thread is a wave of its own (2-3 crests across the screen),
+       with its own phase, so the threads cross over each other like the reference.
+       Scrolling pushes the waves along; easing keeps it smooth. */
+    const e=sm(sp/.16);
+    const k=L.k*(.7+.3*e);                                       // gentler in the hero, fuller zig-zag further down
+    const ph=L.ph+t*L.v+sp*Math.PI*7*L.d;                         // waves travel as you scroll
+    const amp=H*(.035+.03*e)*L.amp;
+    const zig=Math.sin(u*Math.PI*2*k+ph)*amp+Math.sin(u*Math.PI*2*k*1.9-ph*.6)*amp*.25;
+    return c+L.off*H*.16+zig;
+  }
+  const STEPS=140, cs=new Float32Array(STEPS+1);
+  const dust=Array.from({length:60},()=>({u:Math.random(),o:(Math.random()-.5)*1.6,s:.0002+Math.random()*.0005,a:.25+Math.random()*.45}));
+  function draw(){
+    for(let i=0;i<=STEPS;i++) cs[i]=center(i/STEPS);
+    ctx.clearRect(0,0,W,H); ctx.globalCompositeOperation='lighter'; ctx.lineCap='round';
+    for(const L of strands){
+      ctx.beginPath();
+      for(let i=0;i<=STEPS;i++){ const u=i/STEPS, x=u*(W+40)-20, y=strandY(L,u,cs[i]); i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
+      ctx.strokeStyle=L.g; ctx.lineWidth=L.w; ctx.stroke();
     }
-    for (let i = 0; i < 64; i++) {                // radial bar chart between two rings
-      const a = i / 64 * Math.PI * 2, h = 14 + rand() * 62, r1 = 300, r2 = r1 + h;
-      parts.push(`<line x1="${c + Math.cos(a) * r1}" y1="${c + Math.sin(a) * r1}" x2="${c + Math.cos(a) * r2}" y2="${c + Math.sin(a) * r2}" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="${0.35 + rand() * 0.65}"/>`);
+    for(const p of dust){
+      p.u+=p.s; if(p.u>1.05) p.u=-.05;
+      const i=Math.max(0,Math.min(STEPS,Math.round(p.u*STEPS))), y=cs[i]+p.o*H*.22;
+      ctx.globalAlpha=p.a*(.5+.5*Math.sin(t*3+p.o*40)); ctx.fillStyle='rgb(236,208,143)';
+      ctx.fillRect(p.u*W,y,1.4,1.4);
     }
-    const arcStart = rand() * 360;                // a highlighted arc and orbiting dots
-    const toXY = (deg, rad) => [c + Math.cos(deg * Math.PI / 180) * rad, c + Math.sin(deg * Math.PI / 180) * rad];
-    const [ax, ay] = toXY(arcStart, 380), [bx, by] = toXY(arcStart + 110, 380);
-    parts.push(`<path class="gold" d="M${ax} ${ay} A380 380 0 0 1 ${bx} ${by}" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>`);
-    [[arcStart + 110, 380, 9], [arcStart + 200, 205, 6], [arcStart + 300, 470, 5]].forEach(([d, rad, size]) => {
-      const [x, y] = toXY(d, rad); parts.push(`<circle class="gold" cx="${x}" cy="${y}" r="${size}" fill="currentColor"/>`);
-    });
-    parts.push(`<line x1="${c - 24}" y1="${c}" x2="${c + 24}" y2="${c}" stroke="currentColor"/><line x1="${c}" y1="${c - 24}" x2="${c}" y2="${c + 24}" stroke="currentColor"/>`);
-    return `<svg viewBox="0 0 1000 1000" aria-hidden="true">${parts.join('')}</svg>`;
-  }
-
-  // Where each section's ring sits: [section selector, x, y, size, spin direction]
-  const ringPlan = [
-    ['#top', '90%', '14%', 'first', 1],
-    ['#about', '88%', '30%', 'second', -1],
-    ['.numbers', '8%', '50%', 'small', 1],
-    ['#experience', '92%', '60%', 'small', -1],
-    ['#work', '95%', '18%', '', 1],
-    ['#work', '5%', '72%', 'small', -1],
-    ['#skills', '10%', '65%', 'small', 1],
-    ['#credentials', '92%', '40%', 'last', -1],
-    ['#contact', '80%', '45%', 'last', 1],
-  ];
-  const rings = ringPlan.map(([sel, x, y, size, dir], i) => {
-    const host = document.querySelector(sel); if (!host) return null;
-    const el = document.createElement('div');
-    el.className = 'orb' + (size ? ' ' + size : '');
-    el.style.setProperty('--x', x); el.style.setProperty('--y', y);
-    el.innerHTML = ringSVG(i + 3);
-    host.prepend(el);
-    return { el, host, dir };
-  }).filter(Boolean);
-
-  // On phones, the small wheel beside the project cards stays fixed on screen while the
-  // cards stack (a sticky holder, so it is as smooth as the cards themselves).
-  if (matchMedia('(max-width:900px)').matches) {
-    const work = document.getElementById('work'), deck = document.getElementById('pcards');
-    const side = rings.filter(r => r.host === work)[1];
-    if (side && deck) {
-      const pin = document.createElement('div'); pin.className = 'orb-pin';
-      pin.innerHTML = '<div class="orb-stick"></div>';
-      work.prepend(pin); pin.firstChild.appendChild(side.el);
-      side.el.style.setProperty('--x', '4%'); side.el.style.setProperty('--y', '62%');
-      const place = () => { pin.style.top = deck.offsetTop + 'px'; pin.style.height = deck.offsetHeight + 'px'; };
-      place(); addEventListener('resize', place); addEventListener('load', place);
+    ctx.globalAlpha=1;
+    ctx.globalCompositeOperation='source-over';
+    /* soft haze that follows the bundle (tiny canvas, browser upscales it smoothly) */
+    const w=av.width,h=av.height; actx.clearRect(0,0,w,h); actx.filter='blur(5px)'; actx.globalCompositeOperation='lighter'; actx.lineCap='round';
+    const haze=[[.4,'36,84,220',.55],[.18,'201,162,74',.24],[.09,'92,210,255',.18]];
+    for(const [lw,c,a] of haze){
+      actx.beginPath();
+      for(let i=0;i<=30;i++){ const u=i/30, y=cs[Math.round(u*STEPS)]/8; i?actx.lineTo(u*w,y):actx.moveTo(0,y); }
+      const g=actx.createLinearGradient(0,0,w,0); g.addColorStop(0,`rgba(${c},0)`); g.addColorStop(.4,`rgba(${c},${a})`); g.addColorStop(.85,`rgba(${c},${a*.8})`); g.addColorStop(1,`rgba(${c},0)`);
+      actx.strokeStyle=g; actx.lineWidth=h*lw; actx.stroke();
     }
+    actx.filter='none'; actx.globalCompositeOperation='source-over';
   }
 
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let ticking = false;
-  const spin = () => {
-    rings.forEach(({ el, host, dir }) => {
-      const r = host.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > innerHeight + 200) return;   // off-screen: skip
-      const p = Math.max(0, Math.min(1, (innerHeight - r.top) / (innerHeight + r.height)));  // 0 → 1 as the section passes
-      const angle = dir * (scrollY * 0.06);                          // rotate with every scroll
-      const scale = 0.75 + p * 0.55;                                 // zoom in as you move through
-      el.style.transform = `translate(-50%,-50%) rotate(${angle}deg) scale(${scale})`;
-    });
-    ticking = false;
-  };
-  if (!reduceMotion) {
-    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spin); } }, { passive: true });
-    addEventListener('resize', spin);
+  /* Smooth (inertial) wheel scrolling on desktop; touch keeps native scrolling */
+  const root=document.documentElement;
+  const maxY=()=>Math.max(0,root.scrollHeight-innerHeight);
+  const smooth=!reduce && matchMedia('(pointer:fine)').matches;
+  let cur=scrollY, target=scrollY, driving=false;
+  if(smooth){
+    root.style.scrollBehavior='auto';
+    addEventListener('wheel',e=>{
+      if(e.ctrlKey||e.defaultPrevented) return;
+      let d=e.deltaY; if(e.deltaMode===1) d*=18; else if(e.deltaMode===2) d*=innerHeight;
+      e.preventDefault();
+      if(!driving){ cur=scrollY; target=scrollY; }
+      target=Math.max(0,Math.min(maxY(),target+d)); driving=true;
+    },{passive:false});
+    addEventListener('scroll',()=>{ if(!driving){ cur=target=scrollY; } },{passive:true});
+    ['keydown','pointerdown'].forEach(ev=>addEventListener(ev,()=>{ driving=false; },{passive:true}));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const id=a.getAttribute('href'); const el=id==='#top'?null:document.querySelector(id); if(id!=='#top'&&!el) return;
+      e.preventDefault(); if(!driving){ cur=scrollY; }
+      target=Math.max(0,Math.min(maxY(), el?el.getBoundingClientRect().top+scrollY-70:0)); driving=true;
+      history.replaceState(null,'',id);
+    }));
   }
-  spin();
+  function stepScroll(){
+    if(!driving) return;
+    cur+=(target-cur)*.085;
+    if(Math.abs(target-cur)<.4){ cur=target; driving=false; }
+    scrollTo(0,cur);
+  }
+  function readScroll(){
+    const y=driving?cur:scrollY, max=Math.max(1,maxY());
+    spT=y/max;
+    const mid=Math.sin(Math.min(1,spT)*Math.PI), near0=Math.max(0,1-spT/.12);
+    root.style.setProperty('--rib',Math.max(.7*near0, .55+.08*(1-mid)+.12*Math.max(0,(spT-.85)/.15)).toFixed(3));
+  }
+  function loop(){ if(!running) return; stepScroll(); readScroll(); sp+=(spT-sp)*.06; t+=.01; draw(); raf=requestAnimationFrame(loop); }
+  size(); readScroll(); sp=spT; draw();
+  addEventListener('resize',()=>{ size(); draw(); });
+  if(reduce) addEventListener('scroll',()=>{ readScroll(); sp=spT; draw(); },{passive:true});
+  else{
+    loop();
+    document.addEventListener('visibilitychange',()=>{ running=!document.hidden; cancelAnimationFrame(raf); if(running) loop(); });
+  }
+})();
 </script>
 </body>
 </html>
